@@ -10,7 +10,7 @@ import TextField from "@material-ui/core/TextField";
 import { ModalBlock } from "../components/ModalBlock";
 
 export const useStylesSignIn = makeStyles((theme) => ({
-  wrapper: { display: "flex", height: "100vh" },
+  wrapper: { boxSizing: "border-box", display: "flex", height: "100vh" },
   blueSide: {
     display: "flex",
     justifyContent: "center",
@@ -22,8 +22,8 @@ export const useStylesSignIn = makeStyles((theme) => ({
   },
   blueSideBigIcon: {
     position: "absolute",
-    width: "350%",
-    height: "350%",
+    width: "260%",
+    height: "260%",
     left: "50%",
     top: "53%",
     transform: "translate(-50%, -50%)",
@@ -76,7 +76,7 @@ export const useStylesSignIn = makeStyles((theme) => ({
   },
 }));
 
-const SignIn = () => {
+export const SignIn: React.FC = (): React.ReactElement => {
   const classes = useStylesSignIn();
   const [visibleModal, setVisibleModal] = React.useState<"signIn" | "signUp">();
 
@@ -260,5 +260,3 @@ const SignIn = () => {
     </div>
   );
 };
-
-export default SignIn;
