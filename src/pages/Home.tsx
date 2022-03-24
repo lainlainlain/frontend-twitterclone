@@ -1,7 +1,6 @@
 import React from "react";
 import {
   Grid,
-  IconButton,
   Typography,
   Container,
   InputBase,
@@ -9,28 +8,51 @@ import {
   Theme,
   Paper,
 } from "@material-ui/core";
-import TwitterIcon from "@material-ui/icons/Twitter";
-import SearchIcon from "@material-ui/icons/Search";
-import NotificationIcon from "@material-ui/icons/NotificationsNoneOutlined";
-import MessageIcon from "@material-ui/icons/EmailOutlined";
-import BookmarkIcon from "@material-ui/icons/BookmarkBorderOutlined";
-import ListIcon from "@material-ui/icons/ListAltOutlined";
-import UserIcon from "@material-ui/icons/PermIdentityOutlined";
+
 import { makeStyles } from "@material-ui/core";
 import { withStyles } from "@material-ui/styles";
 import grey from "@material-ui/core/colors/grey";
 
 import { Tweet } from "../components/Tweet";
+import { SideMenu } from "../components/SideMenu";
 
 export const useHomeStyles = makeStyles((theme: Theme) => ({
   wrapper: { height: "100vh" },
   logo: { margin: "10px 0" },
   logoIcon: { fontSize: 36 },
-  sideMenuList: { listStyle: "none", margin: 0, padding: 0 },
-  sideMenuListItem: { display: "flex", alignItems: "center" },
+  sideMenuList: { listStyle: "none", margin: 0, padding: 0, width: 230 },
+
   sideMenuListLabel: { fontWeight: 700, fontSize: 20, marginLeft: 15 },
   sideMenuListIcon: {
-    fontSize: 28,
+    fontSize: 32,
+    marginLeft: -5,
+  },
+  sideMenuListItem: {
+    cursor: "pointer",
+    "&:hover": {
+      "& div": {
+        backgroundColor: "rgba(29, 161, 242, 0.1)",
+        "& h6": {
+          color: theme.palette.primary.main,
+        },
+        "& svg path": {
+          fill: theme.palette.primary.main,
+        },
+      },
+    },
+    "& div": {
+      display: "inline-flex",
+      alignItems: "center",
+      padding: "0 10px",
+      borderRadius: 30,
+      height: 55,
+      marginBottom: 15,
+      transition: "background-color ease-in-out 0.1s",
+    },
+  },
+  SideMenuTweetButton: {
+    padding: theme.spacing(3.2),
+    marginTop: theme.spacing(2),
   },
 
   tweetsWrapper: {
@@ -95,105 +117,27 @@ export const Home = () => {
     <Container className={classes.wrapper} maxWidth="lg">
       <Grid container spacing={3}>
         <Grid item xs={3}>
-          <ul className={classes.sideMenuList}>
-            <li className={classes.sideMenuListItem}>
-              <IconButton
-                className={classes.logo}
-                aria-label="delete"
-                color="primary"
-              >
-                <TwitterIcon className={classes.logoIcon}></TwitterIcon>
-              </IconButton>
-            </li>
-            <li className={classes.sideMenuListItem}>
-              <IconButton aria-label="delete" color="primary">
-                <SearchIcon className={classes.sideMenuListIcon}></SearchIcon>
-              </IconButton>
-              <Typography className={classes.sideMenuListLabel}>
-                Поиск
-              </Typography>
-            </li>
-            <li className={classes.sideMenuListItem}>
-              <IconButton aria-label="delete" color="primary">
-                <NotificationIcon
-                  className={classes.sideMenuListIcon}
-                ></NotificationIcon>
-              </IconButton>
-              <Typography className={classes.sideMenuListLabel}>
-                Уведомления
-              </Typography>
-            </li>
-            <li className={classes.sideMenuListItem}>
-              <IconButton aria-label="delete" color="primary">
-                <MessageIcon className={classes.sideMenuListIcon}></MessageIcon>
-              </IconButton>
-              <Typography className={classes.sideMenuListLabel}>
-                Сообщения
-              </Typography>
-            </li>
-            <li className={classes.sideMenuListItem}>
-              <IconButton aria-label="delete" color="primary">
-                <BookmarkIcon
-                  className={classes.sideMenuListIcon}
-                ></BookmarkIcon>
-              </IconButton>
-              <Typography className={classes.sideMenuListLabel}>
-                Закладки
-              </Typography>
-            </li>
-            <li className={classes.sideMenuListItem}>
-              <IconButton aria-label="delete" color="primary">
-                <ListIcon className={classes.sideMenuListIcon}></ListIcon>
-              </IconButton>
-              <Typography className={classes.sideMenuListLabel}>
-                Список
-              </Typography>
-            </li>
-            <li className={classes.sideMenuListItem}>
-              <IconButton aria-label="delete" color="primary">
-                <UserIcon className={classes.sideMenuListIcon}></UserIcon>
-              </IconButton>
-              <Typography className={classes.sideMenuListLabel}>
-                Профиль
-              </Typography>
-            </li>
-          </ul>
+          <SideMenu classes={classes} />
         </Grid>
         <Grid item xs={6}>
           <Paper variant="outlined" className={classes.tweetsWrapper}>
             <Paper variant="outlined" className={classes.tweetsHeader}>
               <Typography variant="h6"> Главная</Typography>
             </Paper>
-            <Tweet
-              text="Не особо высокий паренёк со стройным, но мускулистым телосложением. Волосы чёрные, коротко стриженные и взъерошенные; глаза широко распахнутые, с любопытством глядящие на мир; под левым глазом — тонкая полоска шрама. После атаки Акаину в битве при Маринфорде приобрёл ещё один огромный шрам в виде креста посередине груди. Вне критических ситуаций образ довершает ещё и улыбка «счастливого идиота» от уха до уха."
-              classes={classes}
-              user={{
-                fullname: "Mugiwara",
-                username: "Luffy",
-                avatarUrl:
-                  "https://shikimori.one/system/characters/original/40.jpg",
-              }}
-            ></Tweet>
-            <Tweet
-              text="Не особо высокий паренёк со стройным, но мускулистым телосложением. Волосы чёрные, коротко стриженные и взъерошенные; глаза широко распахнутые, с любопытством глядящие на мир; под левым глазом — тонкая полоска шрама. После атаки Акаину в битве при Маринфорде приобрёл ещё один огромный шрам в виде креста посередине груди. Вне критических ситуаций образ довершает ещё и улыбка «счастливого идиота» от уха до уха."
-              classes={classes}
-              user={{
-                fullname: "Mugiwara",
-                username: "Luffy",
-                avatarUrl:
-                  "https://shikimori.one/system/characters/original/40.jpg",
-              }}
-            ></Tweet>
-            <Tweet
-              text="Не особо высокий паренёк со стройным, но мускулистым телосложением. Волосы чёрные, коротко стриженные и взъерошенные; глаза широко распахнутые, с любопытством глядящие на мир; под левым глазом — тонкая полоска шрама. После атаки Акаину в битве при Маринфорде приобрёл ещё один огромный шрам в виде креста посередине груди. Вне критических ситуаций образ довершает ещё и улыбка «счастливого идиота» от уха до уха."
-              classes={classes}
-              user={{
-                fullname: "Mugiwara",
-                username: "Luffy",
-                avatarUrl:
-                  "https://shikimori.one/system/characters/original/40.jpg",
-              }}
-            ></Tweet>
+            {[
+              ...new Array(20).fill(
+                <Tweet
+                  text="Не особо высокий паренёк со стройным, но мускулистым телосложением. Волосы чёрные, коротко стриженные и взъерошенные; глаза широко распахнутые, с любопытством глядящие на мир; под левым глазом — тонкая полоска шрама. После атаки Акаину в битве при Маринфорде приобрёл ещё один огромный шрам в виде креста посередине груди. Вне критических ситуаций образ довершает ещё и улыбка «счастливого идиота» от уха до уха."
+                  classes={classes}
+                  user={{
+                    fullname: "Mugiwara",
+                    username: "Luffy",
+                    avatarUrl:
+                      "https://shikimori.one/system/characters/original/40.jpg",
+                  }}
+                ></Tweet>
+              ),
+            ]}
           </Paper>
         </Grid>
         <Grid item xs={3}>
