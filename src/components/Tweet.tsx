@@ -1,4 +1,4 @@
-import { Avatar, Grid, IconButton, Paper, Typography } from "@material-ui/core";
+import { Avatar, IconButton, Paper, Typography } from "@material-ui/core";
 import classNames from "classnames";
 import React from "react";
 import CommentIcon from "@material-ui/icons/ChatBubbleOutlineOutlined";
@@ -27,65 +27,50 @@ export const Tweet: React.FC<TweetProps> = ({
       variant="outlined"
       className={classNames(classes.tweet, classes.tweetsHeader)}
     >
-      <Grid container spacing={2}>
-        <Grid item xs={1}>
-          <Avatar
-            alt={`${user.username} avatar`}
-            src={user.avatarUrl}
-            className={classes.tweetAvatar}
-          ></Avatar>
-        </Grid>
-        <Grid item xs={11}>
-          <Typography>
-            <b>{user.fullname}</b>&nbsp;
-            <span className={classes.tweetUserName}>@{user.username}</span>
-            &nbsp;
-            <span className={classes.tweetUserName}>·</span>&nbsp;
-            <span className={classes.tweetUserName}>1 ч</span>
-          </Typography>
-          <Typography variant="body1" gutterBottom>
-            {text}
-          </Typography>
-          <div className={classes.tweetFooter}>
-            <div>
-              <IconButton>
-                <CommentIcon
-                  className={classes.tweetFooterIcon}
-                  color="primary"
-                ></CommentIcon>
-              </IconButton>
-              <span>1</span>
-            </div>
-            <div>
-              <IconButton>
-                <RepostIcon
-                  className={classes.tweetFooterIcon}
-                  color="primary"
-                ></RepostIcon>
-              </IconButton>
-              <span>1</span>
-            </div>
-            <div>
-              <IconButton>
-                <LikeIcon
-                  className={classes.tweetFooterIcon}
-                  color="primary"
-                ></LikeIcon>
-              </IconButton>
-              <span>1</span>
-            </div>
-            <div>
-              <IconButton>
-                <ShareIcon
-                  className={classes.tweetFooterIcon}
-                  color="primary"
-                ></ShareIcon>
-              </IconButton>
-              <span>1</span>
-            </div>
+      <Avatar
+        alt={`${user.username} avatar`}
+        src={user.avatarUrl}
+        className={classes.tweetAvatar}
+      ></Avatar>
+
+      <div>
+        <Typography>
+          <b>{user.fullname}</b>&nbsp;
+          <span className={classes.tweetUserName}>@{user.username}</span>
+          &nbsp;
+          <span className={classes.tweetUserName}>·</span>&nbsp;
+          <span className={classes.tweetUserName}>1 ч</span>
+        </Typography>
+        <Typography variant="body1" gutterBottom>
+          {text}
+        </Typography>
+        <div className={classes.tweetFooter}>
+          <div>
+            <IconButton>
+              <CommentIcon style={{ fontSize: 20 }}></CommentIcon>
+            </IconButton>
+            <span>1</span>
           </div>
-        </Grid>
-      </Grid>
+          <div>
+            <IconButton>
+              <RepostIcon style={{ fontSize: 20 }}></RepostIcon>
+            </IconButton>
+            <span>1</span>
+          </div>
+          <div>
+            <IconButton>
+              <LikeIcon style={{ fontSize: 20 }}></LikeIcon>
+            </IconButton>
+            <span>1</span>
+          </div>
+          <div>
+            <IconButton>
+              <ShareIcon style={{ fontSize: 20 }}></ShareIcon>
+            </IconButton>
+            <span>1</span>
+          </div>
+        </div>
+      </div>
     </Paper>
   );
 };
