@@ -38,7 +38,10 @@ export const Home = () => {
               <Typography variant="h6"> Главная</Typography>
             </Paper>
             <Paper>
-              <AddTweetForm classes={classes}></AddTweetForm>
+              <div className={classes.addForm}>
+                <AddTweetForm classes={classes}></AddTweetForm>
+              </div>
+
               <div className={classes.addFormBottomLine} />
             </Paper>
             {[

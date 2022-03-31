@@ -13,12 +13,14 @@ import { useHomeStyles } from "../pages/Home/theme";
 
 interface AddTweetFormProps {
   classes: ReturnType<typeof useHomeStyles>;
+  maxRows?: number;
 }
 
 const MAX_LENGTH = 280;
 
 export const AddTweetForm: React.FC<AddTweetFormProps> = ({
   classes,
+  maxRows,
 }: AddTweetFormProps): React.ReactElement => {
   const [text, setText] = useState<string>("");
   const textLimitPercent = (text.length / MAX_LENGTH) * 100;
@@ -34,7 +36,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
 
   return (
     <div>
-      <div className={classes.addForm}>
+      <div>
         <div className={classes.addFormBody}>
           <Avatar
             className={classes.tweetAvatar}
@@ -46,7 +48,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
             className={classes.addFormTextarea}
             placeholder="Что происходит?"
             value={text}
-            // rowsMax={maxRows}
+            rowsMax={maxRows}
           />
         </div>
       </div>

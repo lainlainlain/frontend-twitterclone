@@ -126,9 +126,10 @@ export const SideMenu: React.FC<SideMenuProps> = ({
         <ModalBlock
           visible={visibleAddTweetForm}
           onClose={modalBlockCloseHandler}
-          title=""
         >
-          <AddTweetForm classes={classes}></AddTweetForm>
+          <div style={{ width: 540 }}>
+            <AddTweetForm maxRows={15} classes={classes}></AddTweetForm>
+          </div>
         </ModalBlock>
       </li>
     </ul>
