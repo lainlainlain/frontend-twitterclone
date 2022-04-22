@@ -22,9 +22,23 @@ import { SideMenu } from "../../components/SideMenu";
 import { AddTweetForm } from "../../components/AddTweetForm";
 import { useHomeStyles } from "./theme";
 import { SearchTextField } from "../../components/SearchTextField";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchTweets } from "../../store/ducks/tweets/actionCreators";
+import {
+  selectTweetsIsLoading,
+  selectTweetsItems,
+} from "../../store/ducks/tweets/selectors";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 export const Home = () => {
   const classes = useHomeStyles();
+  const dispatch = useDispatch();
+  const tweets = useSelector(selectTweetsItems);
+  const isLoading = useSelector(selectTweetsIsLoading);
+
+  React.useEffect(() => {
+    dispatch(fetchTweets());
+  }, [dispatch]);
 
   return (
     <Container className={classes.wrapper} maxWidth="lg">
@@ -44,20 +58,20 @@ export const Home = () => {
 
               <div className={classes.addFormBottomLine} />
             </Paper>
-            {[
-              ...new Array(20).fill(
+            {isLoading ? (
+              <div className={classes.tweetsCentred}>
+                <CircularProgress></CircularProgress>
+              </div>
+            ) : (
+              tweets.map((tweet) => (
                 <Tweet
-                  text="за широко распахнутые,аину в битве при Маринфорде приобрёл еских ситуаций образ довершает ещё и улыбка «счастливого идиота» от уха до уха."
+                  key={tweet._id}
+                  text={tweet.text}
                   classes={classes}
-                  user={{
-                    fullname: "Mugiwara",
-                    username: "Luffy",
-                    avatarUrl:
-                      "https://shikimori.one/system/characters/original/40.jpg",
-                  }}
+                  user={tweet.user}
                 ></Tweet>
-              ),
-            ]}
+              ))
+            )}
           </Paper>
         </Grid>
         <Grid sm={3} md={3} item>
