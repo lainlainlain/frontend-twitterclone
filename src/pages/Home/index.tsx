@@ -12,12 +12,10 @@ import {
   ListItemText,
   Button,
   InputAdornment,
-  IconButton,
 } from "@material-ui/core";
 
 import PersonAddIcon from "@material-ui/icons/PersonAddOutlined";
 import SearchIcon from "@material-ui/icons/SearchOutlined";
-import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 import { Tweet } from "../../components/Tweet";
 import { SideMenu } from "../../components/SideMenu";
@@ -31,10 +29,11 @@ import {
   selectTweetsItems,
 } from "../../store/ducks/tweets/selectors";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import { fetchTags } from "../../store/tags/actionCreators";
+import { fetchTags } from "../../store/ducks/tags/actionCreators";
 import { Tags } from "../../components/Tags";
 import { Route } from "react-router-dom";
 import { BackButton } from "../../components/BackButton";
+import { FullTweet } from "./components/FullTweet";
 
 export const Home = () => {
   const classes = useHomeStyles();
@@ -92,6 +91,12 @@ export const Home = () => {
                 ))
               )}
             </Route>
+
+            <Route
+              path={["/home/tweet/:id"]}
+              component={FullTweet}
+              exact
+            ></Route>
           </Paper>
         </Grid>
         <Grid sm={3} md={3} item>

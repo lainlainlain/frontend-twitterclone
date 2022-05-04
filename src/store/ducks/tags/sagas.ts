@@ -1,6 +1,6 @@
 //@ts-nocheck
 import { call, put, takeLatest } from "redux-saga/effects";
-import { TagsApi } from "../../services/api/tagsApi";
+import { TagsApi } from "../../../services/api/tagsApi";
 import {
   setTags,
   setTagsLoadingState,

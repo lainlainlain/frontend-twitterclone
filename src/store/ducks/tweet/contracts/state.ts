@@ -1,3 +1,5 @@
+import { Tweet } from "../../tweets/contracts/state";
+
 export enum LoadingState {
   LOADED = "LOADED",
   LOADING = "LOADING",
@@ -5,12 +7,7 @@ export enum LoadingState {
   NEVER = "NEVER",
 }
 
-export interface Tag {
-  text: string;
-  count: number;
-}
-
-export interface TagsState {
-  items: Tag[];
+export interface TweetState {
+  data?: Tweet;
   loadingState: LoadingState;
 }

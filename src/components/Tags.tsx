@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 import { useHomeStyles } from "../pages/Home/theme";
 import { selectTweetsIsLoaded } from "../store/ducks/tweets/selectors";
 
-import { selectTagsItems } from "../store/tags/selectors";
+import { selectTagsItems } from "../store/ducks/tags/selectors";
 
 interface TagsProps {
   classes: ReturnType<typeof useHomeStyles>;

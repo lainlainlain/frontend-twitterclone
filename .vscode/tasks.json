@@ -1,0 +1,24 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+	{
+		"type": "npm",
+		"script": "start",
+		"problemMatcher": [],
+		"label": "npm: start",
+		"detail": "react-scripts start",
+		"group": "build"
+	},
+	{
+		"type": "npm",
+		"script": "json-server",
+		"problemMatcher": [],
+		"label": "npm: json-server",
+		"detail": "json-server --watch public/db.json --port 3001",
+		"group": {
+			"kind": "build",
+			"isDefault": true
+		}
+	}
+]
+}
