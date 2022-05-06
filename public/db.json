@@ -11,44 +11,14 @@
       }
     },
     {
-      "_id": "vomb8k463sf",
-      "text": "dasdsadsa",
+      "_id": "incgpm4e3r",
+      "text": "testing test",
       "user": {
         "fullname": "asdasd",
         "username": "qwewqe",
         "avatarUrl": "https://i.imgur.com/CgCsN3z.jpg?1"
       },
       "id": 2
-    },
-    {
-      "_id": "xyyec7foeaa",
-      "text": "Артем уебак",
-      "user": {
-        "fullname": "asdasd",
-        "username": "qwewqe",
-        "avatarUrl": "https://i.imgur.com/CgCsN3z.jpg?1"
-      },
-      "id": 3
-    },
-    {
-      "_id": "ibo053cqlm",
-      "text": "вфывфывыф",
-      "user": {
-        "fullname": "asdasd",
-        "username": "qwewqe",
-        "avatarUrl": "https://i.imgur.com/CgCsN3z.jpg?1"
-      },
-      "id": 4
-    },
-    {
-      "_id": "t045ce6at2i",
-      "text": "Пишу твит проверяю",
-      "user": {
-        "fullname": "asdasd",
-        "username": "qwewqe",
-        "avatarUrl": "https://i.imgur.com/CgCsN3z.jpg?1"
-      },
-      "id": 5
     }
   ],
   "user": {

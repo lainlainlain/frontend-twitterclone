@@ -1,4 +1,3 @@
-import { Action } from "redux";
 import {
   AddTweetActionInterface,
   FetchAddTweetActionInterface,
@@ -38,8 +37,3 @@ export const addTweet = (payload: Tweet): AddTweetActionInterface => ({
   type: TweetsActionsType.ADD_TWEET,
   payload,
 });
-
-export type TweetsActions =
-  | SetTweetsActionInterface
-  | FetchTweetsActionInterface
-  | SetTweetsLoadingStateActionInterface;

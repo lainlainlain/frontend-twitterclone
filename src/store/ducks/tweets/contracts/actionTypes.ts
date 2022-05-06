@@ -34,3 +34,10 @@ export interface AddTweetActionInterface extends Action<TweetsActionsType> {
   type: TweetsActionsType.ADD_TWEET;
   payload: Tweet;
 }
+
+export type TweetsActions =
+  | SetTweetsActionInterface
+  | FetchTweetsActionInterface
+  | SetTweetsLoadingStateActionInterface
+  | FetchAddTweetActionInterface
+  | AddTweetActionInterface;
