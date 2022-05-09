@@ -69,6 +69,19 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
       fontWeight: 800,
     },
   },
+  tweetsHeaderUser: {
+    display: "flex",
+    alignItems: "center",
+  },
+  fullTweet: {
+    padding: 25,
+  },
+  fullTweetText: {
+    fontSize: 24,
+    marginTop: 20,
+    lineHeight: 1.3125,
+    wordBreak: "break-word",
+  },
 
   tweetsWrapper: {
     borderRadius: 0,
