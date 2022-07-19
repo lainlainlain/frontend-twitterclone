@@ -9,7 +9,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { selectTweetData } from "../../../store/ducks/tweet/selectors";
 import { useParams } from "react-router-dom";
-import { useHomeStyles } from "../theme";
+import { useHomeStyles } from "../../theme";
 
 export const FullTweet: React.FC = (): React.ReactElement | null => {
   const classes = useHomeStyles();

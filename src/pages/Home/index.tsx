@@ -20,7 +20,7 @@ import SearchIcon from "@material-ui/icons/SearchOutlined";
 import { Tweet } from "../../components/Tweet";
 import { SideMenu } from "../../components/SideMenu";
 import { AddTweetForm } from "../../components/AddTweetForm";
-import { useHomeStyles } from "./theme";
+import { useHomeStyles } from "../theme";
 import { SearchTextField } from "../../components/SearchTextField";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTweets } from "../../store/ducks/tweets/actionCreators";

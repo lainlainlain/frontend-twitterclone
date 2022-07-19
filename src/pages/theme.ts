@@ -1,5 +1,5 @@
 import grey from "@material-ui/core/colors/grey";
-import { makeStyles, Theme } from "@material-ui/core";
+import { colors, makeStyles, Theme } from "@material-ui/core";
 
 export const useHomeStyles = makeStyles((theme: Theme) => ({
   wrapper: {
@@ -20,7 +20,13 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     maxWidth: 230,
   },
   sideMenuListItem: {
+    "& a": {
+      color: "inherit",
+      textDecoration: "none",
+    },
+
     cursor: "pointer",
+
     "&:hover": {
       "& div": {
         backgroundColor: "rgba(29, 161, 242, 0.1)",
@@ -206,5 +212,25 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
   addFormBottomRight: {
     display: "flex",
     alignItems: "center",
+  },
+  sideProfile: {
+    display: "flex",
+    alignItems: "center",
+    position: "fixed",
+    bottom: 30,
+    padding: "10px 15px",
+    width: 260,
+    borderRadius: 50,
+    cursor: "pointer",
+    "&:hover": {
+      backgroundColor: colors.lightBlue[50],
+    },
+  },
+  sideProfileInfo: {
+    flex: 1,
+    marginLeft: 10,
+    "& b": {
+      fontSize: 16,
+    },
   },
 }));

@@ -10,7 +10,7 @@ import {
 import Alert from "@mui/material/Alert";
 import ImageOutlinedIcon from "@material-ui/icons/ImageOutlined";
 import EmojiIcon from "@material-ui/icons/SentimentSatisfiedOutlined";
-import { useHomeStyles } from "../pages/Home/theme";
+import { useHomeStyles } from "../pages/theme";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAddTweet } from "../store/ducks/tweets/actionCreators";
 import { selectAddFormState } from "../store/ducks/tweets/selectors";
