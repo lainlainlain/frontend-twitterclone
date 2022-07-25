@@ -6,13 +6,14 @@ import {
   FetchTweetActionInterface,
   TweetActionsType,
 } from "./contracts/actionTypes";
+import { Tweet } from "../tweets/contracts/state";
 
 export function* fetchTweetDataRequest({
   payload: tweetId,
 }: FetchTweetActionInterface): any {
   try {
-    const data = yield call(TweetsApi.fetchTweetData, tweetId);
-    yield put(setTweet(data[0]));
+    const data: Tweet = yield call(TweetsApi.fetchTweetData, tweetId);
+    yield put(setTweet(data));
     console.log(data);
   } catch (error) {
     yield put(setTweetLoadingState(LoadingState.ERROR));

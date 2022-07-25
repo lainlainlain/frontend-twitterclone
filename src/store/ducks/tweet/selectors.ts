@@ -1,4 +1,5 @@
 import { RootState } from "../../store";
+import { Tweet } from "../tweets/contracts/state";
 import { LoadingState, TweetState } from "./contracts/state";
 
 export const selectTweet = (state: RootState): TweetState => state.tweet;
@@ -12,5 +13,5 @@ export const selectTweetIsLoading = (state: RootState): boolean =>
 export const selectTweetIsLoaded = (state: RootState): boolean =>
   selectLoadingState(state) === LoadingState.LOADED;
 
-export const selectTweetData = (state: RootState): TweetState["data"] =>
+export const selectTweetData = (state: RootState): Tweet | undefined =>
   selectTweet(state).data;

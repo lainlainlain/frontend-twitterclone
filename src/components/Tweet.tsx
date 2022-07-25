@@ -7,11 +7,13 @@ import LikeIcon from "@material-ui/icons/FavoriteBorderOutlined";
 import ShareIcon from "@material-ui/icons/ReplyOutlined";
 import { useHomeStyles } from "../pages/theme";
 import { Link } from "react-router-dom";
+import { formatDate } from "../utils/formatDate";
 
 interface TweetProps {
   text: string;
   classes: ReturnType<typeof useHomeStyles>;
   _id: string;
+  createdAt: string;
   user: {
     username: string;
     fullname: string;
@@ -24,6 +26,7 @@ export const Tweet: React.FC<TweetProps> = ({
   classes,
   user,
   text,
+  createdAt,
 }: TweetProps): React.ReactElement => {
   return (
     <Link to={`/home/tweet/${_id}`} className={classes.tweetWrapper}>
@@ -43,7 +46,9 @@ export const Tweet: React.FC<TweetProps> = ({
             <span className={classes.tweetUserName}>@{user.username}</span>
             &nbsp;
             <span className={classes.tweetUserName}>·</span>&nbsp;
-            <span className={classes.tweetUserName}>1 ч</span>
+            <span className={classes.tweetUserName}>
+              {formatDate(new Date(createdAt))}
+            </span>
           </Typography>
           <Typography variant="body1" gutterBottom>
             {text}

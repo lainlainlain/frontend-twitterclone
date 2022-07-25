@@ -88,6 +88,15 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     lineHeight: 1.3125,
     wordBreak: "break-word",
   },
+  fullTweetFooter: {
+    margin: "0 auto",
+    borderTop: "1px solid #E6ECF0",
+    left: 0,
+    maxWidth: "100%",
+    justifyContent: "space-around",
+    padding: "2px 0",
+    marginTop: 20,
+  },
 
   tweetsWrapper: {
     borderRadius: 0,

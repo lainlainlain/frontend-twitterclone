@@ -51,14 +51,13 @@ export const SideMenu: React.FC<SideMenuProps> = ({
           <Link to="/home">
             <div>
               <HomeIcon className={classes.sideMenuListItemIcon} />
-              <Hidden smDown>
-                <Typography
-                  className={classes.sideMenuListItemLabel}
-                  variant="h6"
-                >
-                  Главная
-                </Typography>
-              </Hidden>
+
+              <Typography
+                className={classes.sideMenuListItemLabel}
+                variant="h6"
+              >
+                Главная
+              </Typography>
             </div>
           </Link>
         </li>
@@ -66,14 +65,10 @@ export const SideMenu: React.FC<SideMenuProps> = ({
         <li className={classes.sideMenuListItem}>
           <div>
             <SearchIcon className={classes.sideMenuListItemIcon}></SearchIcon>
-            <Hidden smDown>
-              <Typography
-                className={classes.sideMenuListItemLabel}
-                variant="h6"
-              >
-                Поиск
-              </Typography>
-            </Hidden>
+
+            <Typography className={classes.sideMenuListItemLabel} variant="h6">
+              Поиск
+            </Typography>
           </div>
         </li>
         <li className={classes.sideMenuListItem}>
@@ -82,28 +77,18 @@ export const SideMenu: React.FC<SideMenuProps> = ({
               className={classes.sideMenuListItemIcon}
             ></NotificationIcon>
 
-            <Hidden smDown>
-              <Typography
-                className={classes.sideMenuListItemLabel}
-                variant="h6"
-              >
-                Уведомления
-              </Typography>
-            </Hidden>
+            <Typography className={classes.sideMenuListItemLabel} variant="h6">
+              Уведомления
+            </Typography>
           </div>
         </li>
         <li className={classes.sideMenuListItem}>
           <div>
             <MessageIcon className={classes.sideMenuListItemIcon}></MessageIcon>
 
-            <Hidden smDown>
-              <Typography
-                className={classes.sideMenuListItemLabel}
-                variant="h6"
-              >
-                Сообщения
-              </Typography>
-            </Hidden>
+            <Typography className={classes.sideMenuListItemLabel} variant="h6">
+              Сообщения
+            </Typography>
           </div>
         </li>
         <li className={classes.sideMenuListItem}>
@@ -112,42 +97,27 @@ export const SideMenu: React.FC<SideMenuProps> = ({
               className={classes.sideMenuListItemIcon}
             ></BookmarkIcon>
 
-            <Hidden smDown>
-              <Typography
-                className={classes.sideMenuListItemLabel}
-                variant="h6"
-              >
-                Закладки
-              </Typography>
-            </Hidden>
+            <Typography className={classes.sideMenuListItemLabel} variant="h6">
+              Закладки
+            </Typography>
           </div>
         </li>
         <li className={classes.sideMenuListItem}>
           <div>
             <ListIcon className={classes.sideMenuListItemIcon}></ListIcon>
 
-            <Hidden smDown>
-              <Typography
-                className={classes.sideMenuListItemLabel}
-                variant="h6"
-              >
-                Список
-              </Typography>
-            </Hidden>
+            <Typography className={classes.sideMenuListItemLabel} variant="h6">
+              Список
+            </Typography>
           </div>
         </li>
         <li className={classes.sideMenuListItem}>
           <div>
             <UserIcon className={classes.sideMenuListItem} />
 
-            <Hidden smDown>
-              <Typography
-                className={classes.sideMenuListItemLabel}
-                variant="h6"
-              >
-                Профиль
-              </Typography>
-            </Hidden>
+            <Typography className={classes.sideMenuListItemLabel} variant="h6">
+              Профиль
+            </Typography>
           </div>
         </li>
 
@@ -160,10 +130,8 @@ export const SideMenu: React.FC<SideMenuProps> = ({
             fullWidth
             onClick={modalBlockOpenHandler}
           >
-            <Hidden smDown>Твитнуть</Hidden>
-            <Hidden mdUp>
-              <CreateIcon />
-            </Hidden>
+            Твитнуть
+            <CreateIcon />
           </Button>
           <ModalBlock
             visible={visibleAddTweetForm}

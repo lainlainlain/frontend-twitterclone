@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import {
   Grid,
   Typography,
@@ -81,13 +81,7 @@ export const Home = () => {
                 </div>
               ) : (
                 tweets.map((tweet) => (
-                  <Tweet
-                    _id={tweet._id}
-                    key={tweet._id}
-                    text={tweet.text}
-                    classes={classes}
-                    user={tweet.user}
-                  ></Tweet>
+                  <Tweet key={tweet._id} classes={classes} {...tweet}></Tweet>
                 ))
               )}
             </Route>
@@ -101,7 +95,7 @@ export const Home = () => {
         </Grid>
         <Grid sm={3} md={3} item>
           <div className={classes.rightSide}>
-            <SearchTextField
+            {/* <SearchTextField
               variant="outlined"
               placeholder="Поиск по Твиттеру"
               InputProps={{
@@ -112,7 +106,7 @@ export const Home = () => {
                 ),
               }}
               fullWidth
-            />
+            /> */}
             <Tags classes={classes}></Tags>
             <Paper className={classes.rightSideBlock}>
               <Paper
