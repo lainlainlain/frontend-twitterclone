@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import { store } from "./store/store";
 
 function App() {
+  const asd = ["asdasd"];
   return (
     <Provider store={store}>
       <div className="App">
