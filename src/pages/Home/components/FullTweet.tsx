@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 
 import {
   fetchTweet,
-  setTweet,
+  setTweetData,
 } from "../../../store/ducks/tweet/actionCreators";
 import { useDispatch, useSelector } from "react-redux";
 import { selectTweetData } from "../../../store/ducks/tweet/selectors";
@@ -32,7 +32,7 @@ export const FullTweet: React.FC = (): React.ReactElement | null => {
     }
 
     return () => {
-      dispatch(setTweet(undefined));
+      dispatch(setTweetData(undefined));
     };
   }, [dispatch, id]);
 

@@ -1,17 +1,18 @@
-import React from "react";
-import { SignIn } from "./pages/SignIn";
-import { Route } from "react-router-dom";
-import { Home } from "./pages/Home";
-import { Provider } from "react-redux";
-import { store } from "./store/store";
+import React from 'react';
+import { SignIn } from './pages/Home/SignIn';
+import { Route, Switch } from 'react-router-dom';
+import { Home } from './pages/Home';
+import { Provider } from 'react-redux';
+import { store } from './store/store';
 
 function App() {
-  const asd = ["asdasd"];
   return (
     <Provider store={store}>
       <div className="App">
-        <Route path="/signin" component={SignIn}></Route>
-        <Route path="/" component={Home}></Route>
+        <Switch>
+          <Route path="/signin" component={SignIn} />
+          <Route path="/" component={Home} />
+        </Switch>
       </div>
     </Provider>
   );

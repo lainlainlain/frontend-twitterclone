@@ -16,7 +16,7 @@ export const TweetsApi = {
     return data.data;
   },
   async addTweet(payload: string): Promise<Tweet> {
-    const { data } = await axios.post<Response<Tweet>>(`/tweets`, {
+    const { data } = await axios.post<Response<Tweet>>("/tweets", {
       text: payload,
     });
     return data.data;

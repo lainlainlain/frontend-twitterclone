@@ -8,7 +8,7 @@ import {
 } from "./contracts/actionTypes";
 import { LoadingState, TweetState } from "./contracts/state";
 
-export const setTweet = (
+export const setTweetData = (
   payload: TweetState["data"]
 ): SetTweetActionInterface => ({
   type: TweetActionsType.SET_TWEET_DATA,

@@ -1,53 +1,53 @@
-import grey from "@material-ui/core/colors/grey";
-import { colors, makeStyles, Theme } from "@material-ui/core";
+import grey from '@material-ui/core/colors/grey';
+import { colors, makeStyles, Theme } from '@material-ui/core';
 
 export const useHomeStyles = makeStyles((theme: Theme) => ({
   wrapper: {
-    height: "100vh",
+    height: '100vh',
   },
   logo: {
-    margin: "10px 0",
+    margin: '10px 0',
   },
   logoIcon: {
     fontSize: 36,
   },
   sideMenuList: {
-    position: "sticky",
+    position: 'sticky',
     top: 0,
-    listStyle: "none",
+    listStyle: 'none',
     padding: 0,
     margin: 0,
     maxWidth: 230,
   },
   sideMenuListItem: {
-    "& a": {
-      color: "inherit",
-      textDecoration: "none",
+    '& a': {
+      color: 'inherit',
+      textDecoration: 'none',
     },
 
-    cursor: "pointer",
+    cursor: 'pointer',
 
-    "&:hover": {
-      "& div": {
-        backgroundColor: "rgba(29, 161, 242, 0.1)",
-        "& h6": {
+    '&:hover': {
+      '& div': {
+        backgroundColor: 'rgba(29, 161, 242, 0.1)',
+        '& h6': {
           color: theme.palette.primary.main,
         },
-        "& svg path": {
+        '& svg path': {
           fill: theme.palette.primary.main,
         },
       },
     },
 
-    "& div": {
-      display: "inline-flex",
-      alignItems: "center",
-      position: "relative",
-      padding: "0 25px 0 20px",
+    '& div': {
+      display: 'inline-flex',
+      alignItems: 'center',
+      position: 'relative',
+      padding: '0 25px 0 20px',
       borderRadius: 30,
       height: 50,
       marginBottom: 15,
-      transition: "background-color 0.1s ease-in-out",
+      transition: 'background-color 0.1s ease-in-out',
     },
   },
   sideMenuListItemLabel: {
@@ -63,21 +63,29 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     padding: theme.spacing(3.2),
     marginTop: theme.spacing(2),
   },
+  tweetHeader: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  tweetContent: {
+    flex: 1,
+  },
   tweetsHeader: {
-    display: "flex",
-    alignItems: "center",
-    borderTop: "0",
-    borderLeft: "0",
-    borderRight: "0",
+    display: 'flex',
+    alignItems: 'center',
+    borderTop: '0',
+    borderLeft: '0',
+    borderRight: '0',
     borderRadius: 0,
-    padding: "10px 15px",
-    "& h6": {
+    padding: '10px 15px',
+    '& h6': {
       fontWeight: 800,
     },
   },
   tweetsHeaderUser: {
-    display: "flex",
-    alignItems: "center",
+    display: 'flex',
+    alignItems: 'center',
   },
   fullTweet: {
     padding: 25,
@@ -86,42 +94,42 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     fontSize: 24,
     marginTop: 20,
     lineHeight: 1.3125,
-    wordBreak: "break-word",
+    wordBreak: 'break-word',
   },
   fullTweetFooter: {
-    margin: "0 auto",
-    borderTop: "1px solid #E6ECF0",
+    margin: '0 auto',
+    borderTop: '1px solid #E6ECF0',
     left: 0,
-    maxWidth: "100%",
-    justifyContent: "space-around",
-    padding: "2px 0",
+    maxWidth: '100%',
+    justifyContent: 'space-around',
+    padding: '2px 0',
     marginTop: 20,
   },
 
   tweetsWrapper: {
     borderRadius: 0,
-    height: "100%",
-    borderTop: "0",
-    borderBottom: "0",
+    height: '100%',
+    borderTop: '0',
+    borderBottom: '0',
   },
   tweetsCentred: {
     marginTop: 50,
-    textAlign: "center",
+    textAlign: 'center',
   },
 
   tweet: {
-    display: "flex",
-    alignItems: "flex-start",
-    cursor: "pointer",
+    display: 'flex',
+    alignItems: 'flex-start',
+    cursor: 'pointer',
     paddingTop: 15,
     paddingLeft: 20,
-    "&:hover": {
-      backgroundColor: "rgb(245, 248, 250)",
+    '&:hover': {
+      backgroundColor: 'rgb(245, 248, 250)',
     },
   },
   tweetWrapper: {
-    textDecoration: "none",
-    color: "inherit",
+    textDecoration: 'none',
+    color: 'inherit',
   },
   tweetAvatar: {
     width: theme.spacing(6.5),
@@ -129,10 +137,10 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     marginRight: 15,
   },
   tweetFooter: {
-    display: "flex",
-    position: "relative",
+    display: 'flex',
+    position: 'relative',
     left: -13,
-    justifyContent: "space-between",
+    justifyContent: 'space-between',
     maxWidth: 450,
   },
   tweetUserName: {
@@ -140,14 +148,14 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
   },
   rightSide: {
     paddingTop: 20,
-    position: "sticky",
+    position: 'sticky',
     top: 0,
   },
   rightSideBlock: {
-    backgroundColor: "#F5F8FA",
+    backgroundColor: '#F5F8FA',
     borderRadius: 15,
     marginTop: 20,
-    "& .MuiList-root": {
+    '& .MuiList-root': {
       paddingTop: 0,
     },
   },
@@ -155,90 +163,90 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     borderTop: 0,
     borderLeft: 0,
     borderRight: 0,
-    backgroundColor: "transparent",
-    padding: "13px 18px",
-    "& b": {
+    backgroundColor: 'transparent',
+    padding: '13px 18px',
+    '& b': {
       fontSize: 20,
       fontWeight: 800,
     },
   },
   rightSideBlockItem: {
-    cursor: "pointer",
-    "& .MuiTypography-body1": {
+    cursor: 'pointer',
+    '& .MuiTypography-body1': {
       fontWeight: 700,
     },
-    "& .MuiListItemAvatar-root": {
+    '& .MuiListItemAvatar-root': {
       minWidth: 50,
     },
-    "& .MuiListItemText-root": {
+    '& .MuiListItemText-root': {
       margin: 0,
     },
-    "&:hover": {
-      backgroundColor: "#edf3f6",
+    '&:hover': {
+      backgroundColor: '#edf3f6',
     },
-    "& a": {
-      color: "inherit",
-      textDecoration: "none",
+    '& a': {
+      color: 'inherit',
+      textDecoration: 'none',
     },
   },
   addForm: {
     padding: 20,
   },
   addFormBody: {
-    display: "flex",
-    width: "100%",
+    display: 'flex',
+    width: '100%',
   },
   addFormBottom: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   addFormBottomActions: {
     marginTop: 10,
     paddingLeft: 70,
   },
   addFormTextarea: {
-    width: "100%",
+    width: '100%',
     border: 0,
     fontSize: 20,
-    outline: "none",
-    fontFamily: "inherit",
-    resize: "none",
+    outline: 'none',
+    fontFamily: 'inherit',
+    resize: 'none',
   },
   addFormBottomLine: {
     height: 12,
-    backgroundColor: "#E6ECF0",
+    backgroundColor: '#E6ECF0',
   },
   addFormCircleProgress: {
-    position: "relative",
+    position: 'relative',
     width: 20,
     height: 20,
-    margin: "0 10px",
-    "& .MuiCircularProgress-root": {
-      position: "absolute",
+    margin: '0 10px',
+    '& .MuiCircularProgress-root': {
+      position: 'absolute',
     },
   },
   addFormBottomRight: {
-    display: "flex",
-    alignItems: "center",
+    display: 'flex',
+    alignItems: 'center',
   },
   sideProfile: {
-    display: "flex",
-    alignItems: "center",
-    position: "fixed",
+    display: 'flex',
+    alignItems: 'center',
+    position: 'fixed',
     bottom: 30,
-    padding: "10px 15px",
+    padding: '10px 15px',
     width: 260,
     borderRadius: 50,
-    cursor: "pointer",
-    "&:hover": {
+    cursor: 'pointer',
+    '&:hover': {
       backgroundColor: colors.lightBlue[50],
     },
   },
   sideProfileInfo: {
     flex: 1,
     marginLeft: 10,
-    "& b": {
+    '& b': {
       fontSize: 16,
     },
   },
