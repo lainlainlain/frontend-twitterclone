@@ -1,16 +1,17 @@
-import { Action } from "redux";
-import { LoadingState, Tweet } from "../../tweets/contracts/state";
-import { TweetState } from "./state";
+import { Action } from 'redux';
+import { Tweet } from '../../tweets/contracts/state';
+import { LoadingStatus } from '../../../types';
+import { TweetState } from './state';
 
 export enum TweetActionsType {
-  SET_TWEET_DATA = "tweet/SET_TWEET_DATA",
-  FETCH_TWEET_DATA = "tweet/FETCH_TWEET_DATA",
-  SET_LOADING_STATE = "tweet/SET_LOADING_STATE",
+  SET_TWEET_DATA = 'tweet/SET_TWEET_DATA',
+  FETCH_TWEET_DATA = 'tweet/FETCH_TWEET_DATA',
+  SET_LOADING_STATE = 'tweet/SET_LOADING_STATE',
 }
 
 export interface SetTweetActionInterface extends Action<TweetActionsType> {
   type: TweetActionsType.SET_TWEET_DATA;
-  payload: TweetState["data"];
+  payload: TweetState['data'];
 }
 
 export interface FetchTweetActionInterface extends Action<TweetActionsType> {
@@ -18,8 +19,7 @@ export interface FetchTweetActionInterface extends Action<TweetActionsType> {
   payload: string;
 }
 
-export interface SetTweetLoadingStateActionInterface
-  extends Action<TweetActionsType> {
+export interface SetTweetLoadingStatusActionInterface extends Action<TweetActionsType> {
   type: TweetActionsType.SET_LOADING_STATE;
-  payload: LoadingState;
+  payload: LoadingStatus;
 }

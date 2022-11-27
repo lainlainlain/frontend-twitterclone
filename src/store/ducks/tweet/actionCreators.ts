@@ -1,23 +1,22 @@
-import { Action } from "redux";
-import { Tweet } from "../tweets/contracts/state";
+import { Action } from 'redux';
+import { LoadingStatus } from '../../types';
+import { Tweet } from '../tweets/contracts/state';
 import {
   FetchTweetActionInterface,
   SetTweetActionInterface,
-  SetTweetLoadingStateActionInterface,
+  SetTweetLoadingStatusActionInterface,
   TweetActionsType,
-} from "./contracts/actionTypes";
-import { LoadingState, TweetState } from "./contracts/state";
+} from './contracts/actionTypes';
+import { TweetState } from './contracts/state';
 
-export const setTweetData = (
-  payload: TweetState["data"]
-): SetTweetActionInterface => ({
+export const setTweetData = (payload: TweetState['data']): SetTweetActionInterface => ({
   type: TweetActionsType.SET_TWEET_DATA,
   payload,
 });
 
-export const setTweetLoadingState = (
-  payload: LoadingState
-): SetTweetLoadingStateActionInterface => ({
+export const setTweetLoadingStatus = (
+  payload: LoadingStatus,
+): SetTweetLoadingStatusActionInterface => ({
   type: TweetActionsType.SET_LOADING_STATE,
   payload,
 });
@@ -30,4 +29,4 @@ export const fetchTweet = (payload: string): FetchTweetActionInterface => ({
 export type TweetActions =
   | SetTweetActionInterface
   | FetchTweetActionInterface
-  | SetTweetLoadingStateActionInterface;
+  | SetTweetLoadingStatusActionInterface;

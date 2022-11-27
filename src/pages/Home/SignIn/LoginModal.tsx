@@ -8,6 +8,11 @@ import * as yup from 'yup';
 import { AuthApi } from '../../../services/api/authApi';
 import { Notification } from '../../../components/Notification';
 import { Color } from '@material-ui/lab';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchSignInRequest } from '../../../store/ducks/user/sagas';
+import { fetchSignIn } from '../../../store/ducks/user/actionCreators';
+import { selectUserStatus } from '../../../store/ducks/user/selectors';
+import { LoadingStatus } from '../../../store/types';
 
 interface LoginModalProps {
   open: boolean;
@@ -28,6 +33,9 @@ const LoginFormSchema = yup
 
 export const LoginModal: React.FC<LoginModalProps> = ({ open, onClose }): React.ReactElement => {
   const classes = useStylesSignIn();
+  const dispatch = useDispatch();
+  const loadingStatus = useSelector(selectUserStatus);
+  const openNotificationRef = React.useRef<(text: string, type: Color) => void>(() => {});
 
   const {
     control,
@@ -37,83 +45,83 @@ export const LoginModal: React.FC<LoginModalProps> = ({ open, onClose }): React.
     resolver: yupResolver(LoginFormSchema),
   });
 
-  const onSubmit = async (
-    openNotification: (text: string, type: Color) => void,
-    data: LoginFormProps,
-  ) => {
-    try {
-      const userData = await AuthApi.signIn(data);
-      openNotification('Авторизация успешна', 'success');
-      console.log(userData);
-    } catch {
-      openNotification('Неверный логин и пароль', 'error');
-    }
+  const onSubmit = async (data: LoginFormProps) => {
+    dispatch(fetchSignIn(data));
   };
 
-  console.log(errors);
+  React.useEffect(() => {
+    if (loadingStatus === LoadingStatus.SUCCESS) {
+      openNotificationRef.current('Авторизация успешна', 'success');
+    } else if (loadingStatus === LoadingStatus.ERROR) {
+      openNotificationRef.current('Неверный логин и пароль', 'error');
+    }
+  }, [loadingStatus]);
 
   return (
     <Notification>
-      {(openNotification) => (
-        <ModalBlock visible={open} onClose={onClose} classes={classes} title="Войти в аккаунт">
-          <form onSubmit={handleSubmit(onSubmit.bind(null, openNotification))}>
-            <FormControl className={classes.loginFormControl} component="fieldset" fullWidth>
-              <FormGroup aria-label="position" row>
-                <Controller
-                  name="email"
-                  control={control}
-                  defaultValue=""
-                  render={({ field: { onChange, value } }) => (
-                    <TextField
-                      onChange={onChange}
-                      value={value}
-                      className={classes.loginSideField}
-                      id="email"
-                      label="E-Mail"
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                      variant="filled"
-                      type="email"
-                      error={!!errors.email}
-                      helperText={errors.email?.message}
-                      autoFocus
-                      fullWidth
-                    />
-                  )}
-                />
-                <Controller
-                  name="password"
-                  control={control}
-                  defaultValue=""
-                  render={({ field: { onChange, value } }) => (
-                    <TextField
-                      onChange={onChange}
-                      value={value}
-                      className={classes.loginSideField}
-                      id="password"
-                      label="Пароль"
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                      variant="filled"
-                      type="password"
-                      error={!!errors.password}
-                      helperText={errors.password?.message}
-                      autoFocus
-                      fullWidth
-                    />
-                  )}
-                />
+      {(callback) => {
+        openNotificationRef.current = callback;
+        return (
+          <ModalBlock visible={open} onClose={onClose} classes={classes} title="Войти в аккаунт">
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <FormControl className={classes.loginFormControl} component="fieldset" fullWidth>
+                <FormGroup aria-label="position" row>
+                  <Controller
+                    name="email"
+                    control={control}
+                    defaultValue=""
+                    render={({ field: { onChange, value } }) => (
+                      <TextField
+                        onChange={onChange}
+                        value={value}
+                        className={classes.loginSideField}
+                        id="email"
+                        label="E-Mail"
+                        InputLabelProps={{
+                          shrink: true,
+                        }}
+                        variant="filled"
+                        type="email"
+                        error={!!errors.email}
+                        helperText={errors.email?.message}
+                        autoFocus
+                        fullWidth
+                      />
+                    )}
+                  />
+                  <Controller
+                    name="password"
+                    control={control}
+                    defaultValue=""
+                    render={({ field: { onChange, value } }) => (
+                      <TextField
+                        onChange={onChange}
+                        value={value}
+                        className={classes.loginSideField}
+                        id="password"
+                        label="Пароль"
+                        InputLabelProps={{
+                          shrink: true,
+                        }}
+                        variant="filled"
+                        type="password"
+                        error={!!errors.password}
+                        helperText={errors.password?.message}
+                        autoFocus
+                        fullWidth
+                      />
+                    )}
+                  />
 
-                <Button variant="contained" color="primary" type="submit" fullWidth>
-                  Войти
-                </Button>
-              </FormGroup>
-            </FormControl>
-          </form>
-        </ModalBlock>
-      )}
+                  <Button variant="contained" color="primary" type="submit" fullWidth>
+                    Войти
+                  </Button>
+                </FormGroup>
+              </FormControl>
+            </form>
+          </ModalBlock>
+        );
+      }}
     </Notification>
   );
 };
