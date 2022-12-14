@@ -5,11 +5,11 @@ import { ModalBlock } from '../../../components/ModalBlock';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { AuthApi } from '../../../services/api/authApi';
+
 import { Notification } from '../../../components/Notification';
 import { Color } from '@material-ui/lab';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchSignInRequest } from '../../../store/ducks/user/sagas';
+
 import { fetchSignIn } from '../../../store/ducks/user/actionCreators';
 import { selectUserStatus } from '../../../store/ducks/user/selectors';
 import { LoadingStatus } from '../../../store/types';

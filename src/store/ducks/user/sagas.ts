@@ -7,8 +7,9 @@ import { FetchSignInActionInterface, UserActionsType } from './contracts/actionT
 
 export function* fetchSignInRequest({ payload }: FetchSignInActionInterface): any {
   try {
-    const data = yield call(AuthApi.signIn, payload);
+    const { data } = yield call(AuthApi.signIn, payload);
     yield put(setUserData(data));
+    window.localStorage.setItem('token', data.token);
   } catch (error) {
     yield put(setUserLoadingStatus(LoadingStatus.ERROR));
   }
