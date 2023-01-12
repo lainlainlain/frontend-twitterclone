@@ -1,5 +1,5 @@
 import { Action } from 'redux';
-import { LoginFormProps } from '../../../../pages/Home/SignIn/LoginModal';
+import { LoginFormProps } from '../../../../pages/SignIn/LoginModal';
 import { LoadingStatus } from '../../../types';
 
 import { User } from './state';

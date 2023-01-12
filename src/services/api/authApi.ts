@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { LoginFormProps } from '../../pages/Home/SignIn/LoginModal';
+import { LoginFormProps } from '../../pages/SignIn/LoginModal';
 
 interface ResponseApi {
   status: string;

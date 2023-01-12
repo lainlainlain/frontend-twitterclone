@@ -1,9 +1,9 @@
 import React from 'react';
-import { SignIn } from './pages/Home/SignIn';
+import { SignIn } from './pages/SignIn';
 import { Route, Switch, useHistory } from 'react-router-dom';
 import { Home } from './pages/Home';
-import { Provider, useDispatch } from 'react-redux';
-import { store } from './store/store';
+import { useDispatch } from 'react-redux';
+
 import { AuthApi } from './services/api/authApi';
 import { setUserData } from './store/ducks/user/actionCreators';
 

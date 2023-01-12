@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement } from 'react';
 import {
   Grid,
   Typography,
@@ -12,28 +12,25 @@ import {
   ListItemText,
   Button,
   InputAdornment,
-} from "@material-ui/core";
+} from '@material-ui/core';
 
-import PersonAddIcon from "@material-ui/icons/PersonAddOutlined";
-import SearchIcon from "@material-ui/icons/SearchOutlined";
+import PersonAddIcon from '@material-ui/icons/PersonAddOutlined';
+import SearchIcon from '@material-ui/icons/SearchOutlined';
 
-import { Tweet } from "../../components/Tweet";
-import { SideMenu } from "../../components/SideMenu";
-import { AddTweetForm } from "../../components/AddTweetForm";
-import { useHomeStyles } from "../theme";
-import { SearchTextField } from "../../components/SearchTextField";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchTweets } from "../../store/ducks/tweets/actionCreators";
-import {
-  selectTweetsIsLoading,
-  selectTweetsItems,
-} from "../../store/ducks/tweets/selectors";
-import CircularProgress from "@material-ui/core/CircularProgress";
-import { fetchTags } from "../../store/ducks/tags/actionCreators";
-import { Tags } from "../../components/Tags";
-import { Route } from "react-router-dom";
-import { BackButton } from "../../components/BackButton";
-import { FullTweet } from "./components/FullTweet";
+import { Tweet } from '../../components/Tweet';
+import { SideMenu } from '../../components/SideMenu';
+import { AddTweetForm } from '../../components/AddTweetForm';
+import { useHomeStyles } from '../theme';
+import { SearchTextField } from '../../components/SearchTextField';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchTweets } from '../../store/ducks/tweets/actionCreators';
+import { selectTweetsIsLoading, selectTweetsItems } from '../../store/ducks/tweets/selectors';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import { fetchTags } from '../../store/ducks/tags/actionCreators';
+import { Tags } from '../../components/Tags';
+import { Route } from 'react-router-dom';
+import { BackButton } from '../../components/BackButton';
+import { FullTweet } from './components/FullTweet';
 
 export const Home = () => {
   const classes = useHomeStyles();
@@ -58,14 +55,14 @@ export const Home = () => {
               <Route path="/home/:any">
                 <BackButton></BackButton>
               </Route>
-              <Route path={["/home", "/home/search"]} exact>
+              <Route path={['/home', '/home/search']} exact>
                 <Typography variant="h6">Твиты</Typography>
               </Route>
               <Route path="/home/tweet">
                 <Typography variant="h6">Твитнуть</Typography>
-              </Route>{" "}
+              </Route>{' '}
             </Paper>
-            <Route path={["/home", "/home/search"]} exact>
+            <Route path={['/home', '/home/search']} exact>
               <Paper>
                 <div className={classes.addForm}>
                   <AddTweetForm classes={classes}></AddTweetForm>
@@ -80,17 +77,11 @@ export const Home = () => {
                   <CircularProgress></CircularProgress>
                 </div>
               ) : (
-                tweets.map((tweet) => (
-                  <Tweet key={tweet._id} classes={classes} {...tweet}></Tweet>
-                ))
+                tweets.map((tweet) => <Tweet key={tweet._id} classes={classes} {...tweet}></Tweet>)
               )}
             </Route>
 
-            <Route
-              path={["/home/tweet/:id"]}
-              component={FullTweet}
-              exact
-            ></Route>
+            <Route path={['/home/tweet/:id']} component={FullTweet} exact></Route>
           </Paper>
         </Grid>
         <Grid sm={3} md={3} item>
@@ -109,11 +100,8 @@ export const Home = () => {
             /> */}
             <Tags classes={classes}></Tags>
             <Paper className={classes.rightSideBlock}>
-              <Paper
-                className={classes.rightSideBlockHeader}
-                variant="outlined"
-              >
-                <b>Кого читать</b>
+              <Paper className={classes.rightSideBlockHeader} variant="outlined">
+                <b>Последние пользователи</b>
               </Paper>
               <List>
                 <ListItem className={classes.rightSideBlockItem}>
@@ -126,11 +114,7 @@ export const Home = () => {
                   <ListItemText
                     primary="Dock Of Shame"
                     secondary={
-                      <Typography
-                        component="span"
-                        variant="body2"
-                        color="textSecondary"
-                      >
+                      <Typography component="span" variant="body2" color="textSecondary">
                         @FavDockOfShame
                       </Typography>
                     }

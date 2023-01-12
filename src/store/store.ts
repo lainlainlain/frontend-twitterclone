@@ -6,6 +6,7 @@ import rootSaga from './saga';
 import { TagsState } from './ducks/tags/contracts/state';
 import { TweetState } from './ducks/tweet/contracts/state';
 import { UserState } from './ducks/user/contracts/state';
+import { UsersState } from './ducks/users/contracts/state';
 
 declare global {
   interface Window {
@@ -18,6 +19,7 @@ export interface RootState {
   tags: TagsState;
   tweet: TweetState;
   user: UserState;
+  users: UsersState;
 }
 
 const composeEnhancers =

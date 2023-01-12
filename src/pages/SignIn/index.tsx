@@ -7,7 +7,7 @@ import ChatIcon from '@material-ui/icons/ModeCommentOutlined';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
-import { ModalBlock } from '../../../components/ModalBlock';
+import { ModalBlock } from '../../components/ModalBlock';
 import { LoginModal } from './LoginModal';
 
 export const useStylesSignIn = makeStyles((theme) => ({

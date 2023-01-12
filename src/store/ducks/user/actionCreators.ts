@@ -6,7 +6,7 @@ import {
   UserActionsType,
   FetchSignInActionInterface,
 } from './contracts/actionTypes';
-import { LoginFormProps } from '../../../pages/Home/SignIn/LoginModal';
+import { LoginFormProps } from '../../../pages/SignIn/LoginModal';
 
 export const setUserData = (payload: UserState['data']): SetUserDataActionInterface => ({
   type: UserActionsType.SET_USER_DATA,
