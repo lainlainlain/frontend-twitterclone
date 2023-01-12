@@ -12,19 +12,17 @@ function App() {
 
   const history = useHistory();
 
-  const checkAuth = async () => {
-    try {
-      const { data } = await AuthApi.getMe();
-      dispatch(setUserData(data));
-      history.push('/home');
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const checkAuth = async () => {
+  //   try {
+  //     const { data } = await AuthApi.getMe();
+  //     dispatch(setUserData(data));
+  //     history.push('/home');
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
-  React.useEffect(() => {
-    checkAuth();
-  }, []);
+  React.useEffect(() => {}, []);
 
   return (
     <div className="App">

@@ -9,6 +9,7 @@ import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import { ModalBlock } from '../../components/ModalBlock';
 import { LoginModal } from './LoginModal';
+import { RegisterModal } from './RegisterModal';
 
 export const useStylesSignIn = makeStyles((theme) => ({
   wrapper: { boxSizing: 'border-box', display: 'flex', height: '100vh' },
@@ -139,56 +140,8 @@ export const SignIn: React.FC = (): React.ReactElement => {
           <Button variant="outlined" color="primary" fullWidth onClick={handleClickOpenSignIn}>
             Войти
           </Button>
-          <LoginModal open={visibleModal === 'signIn'} onClose={handleCloseModal}></LoginModal>
-          <ModalBlock
-            visible={visibleModal === 'signUp'}
-            onClose={handleCloseModal}
-            classes={classes}
-            title="Создайте учетную запись">
-            <FormControl className={classes.loginFormControl} component="fieldset" fullWidth>
-              <FormGroup aria-label="position" row>
-                <TextField
-                  className={classes.registerField}
-                  autoFocus
-                  id="name"
-                  label="Имя"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  variant="filled"
-                  type="name"
-                  fullWidth
-                />
-                <TextField
-                  className={classes.registerField}
-                  autoFocus
-                  id="email"
-                  label="E-Mail"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  variant="filled"
-                  type="email"
-                  fullWidth
-                />
-                <TextField
-                  className={classes.registerField}
-                  autoFocus
-                  id="password"
-                  label="Пароль"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  variant="filled"
-                  type="password"
-                  fullWidth
-                />
-                <Button variant="contained" color="primary" fullWidth>
-                  Далее
-                </Button>
-              </FormGroup>
-            </FormControl>
-          </ModalBlock>
+          <LoginModal open={visibleModal === 'signIn'} onClose={handleCloseModal} />
+          <RegisterModal open={visibleModal === 'signUp'} onClose={handleCloseModal} />
         </div>
       </section>
     </div>

@@ -1,27 +1,10 @@
-import React, { ReactElement } from 'react';
-import {
-  Grid,
-  Typography,
-  Container,
-  Paper,
-  ListItemAvatar,
-  ListItem,
-  List,
-  Divider,
-  Avatar,
-  ListItemText,
-  Button,
-  InputAdornment,
-} from '@material-ui/core';
-
-import PersonAddIcon from '@material-ui/icons/PersonAddOutlined';
-import SearchIcon from '@material-ui/icons/SearchOutlined';
+import React from 'react';
+import { Grid, Typography, Container, Paper } from '@material-ui/core';
 
 import { Tweet } from '../../components/Tweet';
 import { SideMenu } from '../../components/SideMenu';
 import { AddTweetForm } from '../../components/AddTweetForm';
 import { useHomeStyles } from '../theme';
-import { SearchTextField } from '../../components/SearchTextField';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchTweets } from '../../store/ducks/tweets/actionCreators';
 import { selectTweetsIsLoading, selectTweetsItems } from '../../store/ducks/tweets/selectors';
@@ -31,6 +14,7 @@ import { Tags } from '../../components/Tags';
 import { Route } from 'react-router-dom';
 import { BackButton } from '../../components/BackButton';
 import { FullTweet } from './components/FullTweet';
+import { Users } from '../../components/Users';
 
 export const Home = () => {
   const classes = useHomeStyles();
@@ -99,33 +83,7 @@ export const Home = () => {
               fullWidth
             /> */}
             <Tags classes={classes}></Tags>
-            <Paper className={classes.rightSideBlock}>
-              <Paper className={classes.rightSideBlockHeader} variant="outlined">
-                <b>Последние пользователи</b>
-              </Paper>
-              <List>
-                <ListItem className={classes.rightSideBlockItem}>
-                  <ListItemAvatar>
-                    <Avatar
-                      alt="Remy Sharp"
-                      src="https://pbs.twimg.com/profile_images/1267938486566428673/US6KRPbA_normal.jpg"
-                    />
-                  </ListItemAvatar>
-                  <ListItemText
-                    primary="Dock Of Shame"
-                    secondary={
-                      <Typography component="span" variant="body2" color="textSecondary">
-                        @FavDockOfShame
-                      </Typography>
-                    }
-                  />
-                  <Button color="primary">
-                    <PersonAddIcon />
-                  </Button>
-                </ListItem>
-                <Divider component="li" />
-              </List>
-            </Paper>
+            <Users />
           </div>
         </Grid>
       </Grid>

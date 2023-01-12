@@ -52,6 +52,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({ open, onClose }): React.
   React.useEffect(() => {
     if (loadingStatus === LoadingStatus.SUCCESS) {
       openNotificationRef.current('Авторизация успешна', 'success');
+      onClose();
     } else if (loadingStatus === LoadingStatus.ERROR) {
       openNotificationRef.current('Неверный логин и пароль', 'error');
     }
@@ -113,7 +114,12 @@ export const LoginModal: React.FC<LoginModalProps> = ({ open, onClose }): React.
                     )}
                   />
 
-                  <Button variant="contained" color="primary" type="submit" fullWidth>
+                  <Button
+                    disabled={loadingStatus === LoadingStatus.LOADING}
+                    variant="contained"
+                    color="primary"
+                    type="submit"
+                    fullWidth>
                     Войти
                   </Button>
                 </FormGroup>

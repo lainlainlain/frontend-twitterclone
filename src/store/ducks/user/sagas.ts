@@ -3,13 +3,27 @@ import { AuthApi } from '../../../services/api/authApi';
 
 import { LoadingStatus } from '../../types';
 import { setUserData, setUserLoadingStatus } from './actionCreators';
-import { FetchSignInActionInterface, UserActionsType } from './contracts/actionTypes';
+import {
+  FetchSignInActionInterface,
+  FetchSignUpActionInterface,
+  UserActionsType,
+} from './contracts/actionTypes';
 
 export function* fetchSignInRequest({ payload }: FetchSignInActionInterface): any {
   try {
     const { data } = yield call(AuthApi.signIn, payload);
-    yield put(setUserData(data));
     window.localStorage.setItem('token', data.token);
+    yield put(setUserData(data));
+  } catch (error) {
+    yield put(setUserLoadingStatus(LoadingStatus.ERROR));
+  }
+}
+
+export function* fetchSignUpRequest({ payload }: FetchSignUpActionInterface): any {
+  try {
+    yield put(setUserLoadingStatus(LoadingStatus.LOADING));
+    yield call(AuthApi.signUp, payload);
+    yield put(setUserLoadingStatus(LoadingStatus.SUCCESS));
   } catch (error) {
     yield put(setUserLoadingStatus(LoadingStatus.ERROR));
   }
@@ -17,4 +31,5 @@ export function* fetchSignInRequest({ payload }: FetchSignInActionInterface): an
 
 export function* userSaga() {
   yield takeLatest(UserActionsType.FETCH_SIGN_IN, fetchSignInRequest);
+  yield takeLatest(UserActionsType.FETCH_SIGN_UP, fetchSignUpRequest);
 }

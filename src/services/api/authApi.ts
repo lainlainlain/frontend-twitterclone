@@ -1,5 +1,6 @@
-import axios from 'axios';
+import { axios } from '../../core/axios';
 import { LoginFormProps } from '../../pages/SignIn/LoginModal';
+import { RegisterFormProps } from '../../pages/SignIn/RegisterModal';
 
 interface ResponseApi {
   status: string;
@@ -11,6 +12,16 @@ export const AuthApi = {
     const { data } = await axios.post<ResponseApi>('/auth/login', {
       username: postData.email,
       password: postData.password,
+    });
+    return data;
+  },
+  async signUp(postData: RegisterFormProps): Promise<ResponseApi> {
+    const { data } = await axios.post<ResponseApi>('/auth/register', {
+      username: postData.username,
+      fullname: postData.fullname,
+      email: postData.email,
+      password: postData.password,
+      password2: postData.password2,
     });
     return data;
   },
