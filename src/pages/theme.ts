@@ -2,6 +2,12 @@ import grey from '@material-ui/core/colors/grey';
 import { colors, makeStyles, Theme } from '@material-ui/core';
 
 export const useHomeStyles = makeStyles((theme: Theme) => ({
+  centered: {
+    position: 'absolute',
+    left: '50%',
+    top: '50%',
+    transform: 'translate(-50%, -50%)',
+  },
   wrapper: {
     height: '100vh',
   },
@@ -251,3 +257,9 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     },
   },
 }));
+function translateY(
+  arg0: number,
+  arg1: number,
+): string | import('@material-ui/styles').PropsFunc<{}, string | undefined> | undefined {
+  throw new Error('Function not implemented.');
+}

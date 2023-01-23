@@ -68,145 +68,138 @@ export const RegisterModal: React.FC<RegisterModalProps> = ({
   }, [loadingStatus]);
 
   return (
-    <Notification>
-      {(callback) => {
-        openNotificationRef.current = callback;
-        return (
-          <ModalBlock visible={open} onClose={onClose} classes={classes} title="Войти в аккаунт">
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <FormControl className={classes.loginFormControl} component="fieldset" fullWidth>
-                <FormGroup aria-label="position" row>
-                  <Controller
-                    name="email"
-                    control={control}
-                    defaultValue=""
-                    render={({ field: { onChange, value } }) => (
-                      <TextField
-                        onChange={onChange}
-                        value={value}
-                        className={classes.loginSideField}
-                        id="email"
-                        label="Электронная почта"
-                        InputLabelProps={{
-                          shrink: true,
-                        }}
-                        variant="filled"
-                        type="email"
-                        error={!!errors.email}
-                        helperText={errors.email?.message}
-                        autoFocus
-                        fullWidth
-                      />
-                    )}
-                  />
+    <ModalBlock visible={open} onClose={onClose} classes={classes} title="Войти в аккаунт">
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <FormControl className={classes.loginFormControl} component="fieldset" fullWidth>
+          <FormGroup aria-label="position" row>
+            <Controller
+              name="email"
+              control={control}
+              defaultValue=""
+              render={({ field: { onChange, value } }) => (
+                <TextField
+                  onChange={onChange}
+                  value={value}
+                  className={classes.loginSideField}
+                  id="email"
+                  label="Электронная почта"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  variant="filled"
+                  type="email"
+                  error={!!errors.email}
+                  helperText={errors.email?.message}
+                  autoFocus
+                  fullWidth
+                />
+              )}
+            />
 
-                  <Controller
-                    name="username"
-                    control={control}
-                    defaultValue=""
-                    render={({ field: { onChange, value } }) => (
-                      <TextField
-                        onChange={onChange}
-                        value={value}
-                        className={classes.loginSideField}
-                        id="name"
-                        label="Ваш логин"
-                        InputLabelProps={{
-                          shrink: true,
-                        }}
-                        variant="filled"
-                        type="name"
-                        error={!!errors.username}
-                        helperText={errors.username?.message}
-                        autoFocus
-                        fullWidth
-                      />
-                    )}
-                  />
-                  <Controller
-                    name="fullname"
-                    control={control}
-                    defaultValue=""
-                    render={({ field: { onChange, value } }) => (
-                      <TextField
-                        onChange={onChange}
-                        value={value}
-                        className={classes.loginSideField}
-                        id="fullname"
-                        label="Ваше полное имя"
-                        InputLabelProps={{
-                          shrink: true,
-                        }}
-                        variant="filled"
-                        type="name"
-                        error={!!errors.fullname}
-                        helperText={errors.fullname?.message}
-                        autoFocus
-                        fullWidth
-                      />
-                    )}
-                  />
-                  <Controller
-                    name="password"
-                    control={control}
-                    defaultValue=""
-                    render={({ field: { onChange, value } }) => (
-                      <TextField
-                        onChange={onChange}
-                        value={value}
-                        className={classes.loginSideField}
-                        id="password"
-                        label="Ваш пароль"
-                        InputLabelProps={{
-                          shrink: true,
-                        }}
-                        variant="filled"
-                        type="password"
-                        error={!!errors.password}
-                        helperText={errors.password?.message}
-                        autoFocus
-                        fullWidth
-                      />
-                    )}
-                  />
-                  <Controller
-                    name="password2"
-                    control={control}
-                    defaultValue=""
-                    render={({ field: { onChange, value } }) => (
-                      <TextField
-                        onChange={onChange}
-                        value={value}
-                        className={classes.loginSideField}
-                        id="password2"
-                        label="Повторите ваш пароль"
-                        InputLabelProps={{
-                          shrink: true,
-                        }}
-                        variant="filled"
-                        type="password"
-                        error={!!errors.password2}
-                        helperText={errors.password2?.message}
-                        autoFocus
-                        fullWidth
-                      />
-                    )}
-                  />
+            <Controller
+              name="username"
+              control={control}
+              defaultValue=""
+              render={({ field: { onChange, value } }) => (
+                <TextField
+                  onChange={onChange}
+                  value={value}
+                  className={classes.loginSideField}
+                  id="name"
+                  label="Ваш логин"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  variant="filled"
+                  type="name"
+                  error={!!errors.username}
+                  helperText={errors.username?.message}
+                  autoFocus
+                  fullWidth
+                />
+              )}
+            />
+            <Controller
+              name="fullname"
+              control={control}
+              defaultValue=""
+              render={({ field: { onChange, value } }) => (
+                <TextField
+                  onChange={onChange}
+                  value={value}
+                  className={classes.loginSideField}
+                  id="fullname"
+                  label="Ваше полное имя"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  variant="filled"
+                  type="name"
+                  error={!!errors.fullname}
+                  helperText={errors.fullname?.message}
+                  autoFocus
+                  fullWidth
+                />
+              )}
+            />
+            <Controller
+              name="password"
+              control={control}
+              defaultValue=""
+              render={({ field: { onChange, value } }) => (
+                <TextField
+                  onChange={onChange}
+                  value={value}
+                  className={classes.loginSideField}
+                  id="password"
+                  label="Ваш пароль"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  variant="filled"
+                  type="password"
+                  error={!!errors.password}
+                  helperText={errors.password?.message}
+                  autoFocus
+                  fullWidth
+                />
+              )}
+            />
+            <Controller
+              name="password2"
+              control={control}
+              defaultValue=""
+              render={({ field: { onChange, value } }) => (
+                <TextField
+                  onChange={onChange}
+                  value={value}
+                  className={classes.loginSideField}
+                  id="password2"
+                  label="Повторите ваш пароль"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  variant="filled"
+                  type="password"
+                  error={!!errors.password2}
+                  helperText={errors.password2?.message}
+                  autoFocus
+                  fullWidth
+                />
+              )}
+            />
 
-                  <Button
-                    disabled={loadingStatus === LoadingStatus.LOADING}
-                    variant="contained"
-                    color="primary"
-                    type="submit"
-                    fullWidth>
-                    Регистрация
-                  </Button>
-                </FormGroup>
-              </FormControl>
-            </form>
-          </ModalBlock>
-        );
-      }}
-    </Notification>
+            <Button
+              disabled={loadingStatus === LoadingStatus.LOADING}
+              variant="contained"
+              color="primary"
+              type="submit"
+              fullWidth>
+              Регистрация
+            </Button>
+          </FormGroup>
+        </FormControl>
+      </form>
+    </ModalBlock>
   );
 };

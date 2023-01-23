@@ -59,75 +59,68 @@ export const LoginModal: React.FC<LoginModalProps> = ({ open, onClose }): React.
   }, [loadingStatus]);
 
   return (
-    <Notification>
-      {(callback) => {
-        openNotificationRef.current = callback;
-        return (
-          <ModalBlock visible={open} onClose={onClose} classes={classes} title="Войти в аккаунт">
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <FormControl className={classes.loginFormControl} component="fieldset" fullWidth>
-                <FormGroup aria-label="position" row>
-                  <Controller
-                    name="email"
-                    control={control}
-                    defaultValue=""
-                    render={({ field: { onChange, value } }) => (
-                      <TextField
-                        onChange={onChange}
-                        value={value}
-                        className={classes.loginSideField}
-                        id="email"
-                        label="E-Mail"
-                        InputLabelProps={{
-                          shrink: true,
-                        }}
-                        variant="filled"
-                        type="email"
-                        error={!!errors.email}
-                        helperText={errors.email?.message}
-                        autoFocus
-                        fullWidth
-                      />
-                    )}
-                  />
-                  <Controller
-                    name="password"
-                    control={control}
-                    defaultValue=""
-                    render={({ field: { onChange, value } }) => (
-                      <TextField
-                        onChange={onChange}
-                        value={value}
-                        className={classes.loginSideField}
-                        id="password"
-                        label="Пароль"
-                        InputLabelProps={{
-                          shrink: true,
-                        }}
-                        variant="filled"
-                        type="password"
-                        error={!!errors.password}
-                        helperText={errors.password?.message}
-                        autoFocus
-                        fullWidth
-                      />
-                    )}
-                  />
+    <ModalBlock visible={open} onClose={onClose} classes={classes} title="Войти в аккаунт">
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <FormControl className={classes.loginFormControl} component="fieldset" fullWidth>
+          <FormGroup aria-label="position" row>
+            <Controller
+              name="email"
+              control={control}
+              defaultValue=""
+              render={({ field: { onChange, value } }) => (
+                <TextField
+                  onChange={onChange}
+                  value={value}
+                  className={classes.loginSideField}
+                  id="email"
+                  label="E-Mail"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  variant="filled"
+                  type="email"
+                  error={!!errors.email}
+                  helperText={errors.email?.message}
+                  autoFocus
+                  fullWidth
+                />
+              )}
+            />
+            <Controller
+              name="password"
+              control={control}
+              defaultValue=""
+              render={({ field: { onChange, value } }) => (
+                <TextField
+                  onChange={onChange}
+                  value={value}
+                  className={classes.loginSideField}
+                  id="password"
+                  label="Пароль"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  variant="filled"
+                  type="password"
+                  error={!!errors.password}
+                  helperText={errors.password?.message}
+                  autoFocus
+                  fullWidth
+                />
+              )}
+            />
 
-                  <Button
-                    disabled={loadingStatus === LoadingStatus.LOADING}
-                    variant="contained"
-                    color="primary"
-                    type="submit"
-                    fullWidth>
-                    Войти
-                  </Button>
-                </FormGroup>
-              </FormControl>
-            </form>
-          </ModalBlock>
-        );
-      }}
-    </Notification>
+            <Button
+              disabled={loadingStatus === LoadingStatus.LOADING}
+              variant="contained"
+              color="primary"
+              type="submit"
+              fullWidth>
+              Войти
+            </Button>
+          </FormGroup>
+        </FormControl>
+      </form>
+    </ModalBlock>
   );
 };

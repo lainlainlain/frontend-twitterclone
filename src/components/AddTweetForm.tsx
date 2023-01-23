@@ -1,20 +1,14 @@
-import React, { useState } from "react";
-import classNames from "classnames";
-import {
-  Avatar,
-  Button,
-  CircularProgress,
-  IconButton,
-  TextareaAutosize,
-} from "@material-ui/core";
-import Alert from "@mui/material/Alert";
-import ImageOutlinedIcon from "@material-ui/icons/ImageOutlined";
-import EmojiIcon from "@material-ui/icons/SentimentSatisfiedOutlined";
-import { useHomeStyles } from "../pages/theme";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchAddTweet } from "../store/ducks/tweets/actionCreators";
-import { selectAddFormState } from "../store/ducks/tweets/selectors";
-import { AddFormState } from "../store/ducks/tweets/contracts/state";
+import React, { useState } from 'react';
+import classNames from 'classnames';
+import { Avatar, Button, CircularProgress, IconButton, TextareaAutosize } from '@material-ui/core';
+import Alert from '@mui/material/Alert';
+import ImageOutlinedIcon from '@material-ui/icons/ImageOutlined';
+import EmojiIcon from '@material-ui/icons/SentimentSatisfiedOutlined';
+import { useHomeStyles } from '../pages/theme';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchAddTweet } from '../store/ducks/tweets/actionCreators';
+import { selectAddFormState } from '../store/ducks/tweets/selectors';
+import { AddFormState } from '../store/ducks/tweets/contracts/state';
 
 interface AddTweetFormProps {
   classes: ReturnType<typeof useHomeStyles>;
@@ -29,7 +23,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
 }: AddTweetFormProps): React.ReactElement => {
   const dispatch = useDispatch();
   const addFormState = useSelector(selectAddFormState);
-  const [text, setText] = useState<string>("");
+  const [text, setText] = useState<string>('');
   const textLimitPercent = (text.length / MAX_LENGTH) * 100;
   const textCount = MAX_LENGTH - text.length;
 
@@ -41,7 +35,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
 
   const submitTweetHandler = () => {
     dispatch(fetchAddTweet(text));
-    setText("");
+    setText('');
   };
 
   return (
@@ -63,12 +57,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
         </div>
       </div>
       <div className={classes.addFormBottom}>
-        <div
-          className={classNames(
-            classes.tweetFooter,
-            classes.addFormBottomActions
-          )}
-        >
+        <div className={classNames(classes.tweetFooter, classes.addFormBottomActions)}>
           <IconButton color="primary">
             <ImageOutlinedIcon style={{ fontSize: 26 }} />
           </IconButton>
@@ -86,10 +75,10 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
                   size={20}
                   thickness={5}
                   value={textLimitPercent > 100 ? 100 : textLimitPercent}
-                  style={textLimitPercent >= 100 ? { color: "red" } : undefined}
+                  style={textLimitPercent >= 100 ? { color: 'red' } : undefined}
                 />
                 <CircularProgress
-                  style={{ color: "rgba(0, 0, 0, 0.1)" }}
+                  style={{ color: 'rgba(0, 0, 0, 0.1)' }}
                   variant="static"
                   size={20}
                   thickness={5}
@@ -100,19 +89,14 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
           )}
 
           <Button
-            disabled={
-              addFormState === AddFormState.LOADING ||
-              !text ||
-              textLimitPercent >= 100
-            }
+            disabled={addFormState === AddFormState.LOADING || !text || textLimitPercent >= 100}
             color="primary"
             variant="contained"
-            onClick={submitTweetHandler}
-          >
+            onClick={submitTweetHandler}>
             {addFormState === AddFormState.LOADING ? (
               <CircularProgress color="inherit" size={16}></CircularProgress>
             ) : (
-              "Твитнуть"
+              'Твитнуть'
             )}
           </Button>
         </div>

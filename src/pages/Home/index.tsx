@@ -44,7 +44,7 @@ export const Home = () => {
               </Route>
               <Route path="/home/tweet">
                 <Typography variant="h6">Твитнуть</Typography>
-              </Route>{' '}
+              </Route>
             </Paper>
             <Route path={['/home', '/home/search']} exact>
               <Paper>
