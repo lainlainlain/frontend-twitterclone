@@ -34,6 +34,26 @@ function App() {
     }
   }, [isAuth, isReady]);
 
+  React.useEffect(() => {
+    const el = document.querySelector('#avatar');
+
+    if (el) {
+      el.addEventListener('change', () => {
+        const avatar = document.getElementById('avatar');
+        if (avatar) {
+          // @ts-ignore
+          let photo = avatar.files[0];
+          let req = new XMLHttpRequest();
+          let formData = new FormData();
+
+          formData.append('avatar', photo);
+          req.open('POST', 'http://localhost:8888/upload');
+          req.send(formData);
+        }
+      });
+    }
+  }, []);
+
   if (!isReady) {
     return (
       <div className={classes.centered}>
