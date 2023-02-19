@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import classNames from 'classnames';
 import { Avatar, Button, CircularProgress, IconButton, TextareaAutosize } from '@material-ui/core';
 import Alert from '@mui/material/Alert';
-import ImageOutlinedIcon from '@material-ui/icons/ImageOutlined';
-import EmojiIcon from '@material-ui/icons/SentimentSatisfiedOutlined';
+
 import { useHomeStyles } from '../pages/theme';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAddTweet } from '../store/ducks/tweets/actionCreators';
 import { selectAddFormState } from '../store/ducks/tweets/selectors';
 import { AddFormState } from '../store/ducks/tweets/contracts/state';
+import { UploadImage } from './UploadImage';
 
 interface AddTweetFormProps {
   classes: ReturnType<typeof useHomeStyles>;
@@ -58,12 +58,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
       </div>
       <div className={classes.addFormBottom}>
         <div className={classNames(classes.tweetFooter, classes.addFormBottomActions)}>
-          <IconButton color="primary">
-            <ImageOutlinedIcon style={{ fontSize: 26 }} />
-          </IconButton>
-          <IconButton color="primary">
-            <EmojiIcon style={{ fontSize: 26 }} />
-          </IconButton>
+          <UploadImage></UploadImage>
         </div>
         <div className={classes.addFormBottomRight}>
           {text && (

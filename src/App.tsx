@@ -35,19 +35,19 @@ function App() {
   }, [isAuth, isReady]);
 
   React.useEffect(() => {
-    const el = document.querySelector('#avatar');
+    const el = document.querySelector('#image');
 
     if (el) {
       el.addEventListener('change', () => {
-        const avatar = document.getElementById('avatar');
-        if (avatar) {
+        const image = document.getElementById('image');
+        if (image) {
           // @ts-ignore
-          let photo = avatar.files[0];
+          let photo = image.files[0];
           let req = new XMLHttpRequest();
           let formData = new FormData();
 
-          formData.append('avatar', photo);
-          req.open('POST', 'http://localhost:8888/upload');
+          formData.append('image', photo);
+          req.open('POST', '/upload');
           req.send(formData);
         }
       });

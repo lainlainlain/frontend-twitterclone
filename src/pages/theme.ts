@@ -256,6 +256,23 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
       fontSize: 16,
     },
   },
+  imagesList: {
+    display: 'flex',
+    alignItems: 'center',
+    marginTop: '10px',
+
+    flexWrap: 'wrap',
+  },
+  imagesListItem: {
+    overflow: 'hidden',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    width: 50,
+    height: 50,
+    borderRadius: '6px',
+    marginRight: '8px',
+    marginBottom: '10px',
+  },
 }));
 function translateY(
   arg0: number,
