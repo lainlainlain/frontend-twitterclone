@@ -5,14 +5,20 @@ import Alert from '@mui/material/Alert';
 
 import { useHomeStyles } from '../pages/theme';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAddTweet } from '../store/ducks/tweets/actionCreators';
+import { fetchAddTweet, setAddTweetForm } from '../store/ducks/tweets/actionCreators';
 import { selectAddFormState } from '../store/ducks/tweets/selectors';
 import { AddFormState } from '../store/ducks/tweets/contracts/state';
 import { UploadImage } from './UploadImage';
+import { uploadImages } from '../utils/uploadImages';
 
 interface AddTweetFormProps {
   classes: ReturnType<typeof useHomeStyles>;
   maxRows?: number;
+}
+
+export interface ImageObj {
+  file: File;
+  blobUrl: string;
 }
 
 const MAX_LENGTH = 280;
@@ -24,6 +30,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
   const dispatch = useDispatch();
   const addFormState = useSelector(selectAddFormState);
   const [text, setText] = useState<string>('');
+  const [images, setImages] = React.useState<ImageObj[]>([]);
   const textLimitPercent = (text.length / MAX_LENGTH) * 100;
   const textCount = MAX_LENGTH - text.length;
 
@@ -33,9 +40,17 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
     }
   };
 
-  const submitTweetHandler = () => {
-    dispatch(fetchAddTweet(text));
+  const submitTweetHandler = async () => {
+    let result = [];
+    dispatch(setAddTweetForm(AddFormState.LOADING));
+    for (let i = 0; i < images.length; i++) {
+      const file = images[i].file;
+      const { url } = await uploadImages(file);
+      result.push(url);
+    }
+    dispatch(fetchAddTweet({ text, images: result }));
     setText('');
+    setImages([]);
   };
 
   return (
@@ -58,7 +73,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
       </div>
       <div className={classes.addFormBottom}>
         <div className={classNames(classes.tweetFooter, classes.addFormBottomActions)}>
-          <UploadImage></UploadImage>
+          <UploadImage images={images} onChangeImages={setImages}></UploadImage>
         </div>
         <div className={classes.addFormBottomRight}>
           {text && (

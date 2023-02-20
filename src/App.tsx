@@ -34,26 +34,6 @@ function App() {
     }
   }, [isAuth, isReady]);
 
-  React.useEffect(() => {
-    const el = document.querySelector('#image');
-
-    if (el) {
-      el.addEventListener('change', () => {
-        const image = document.getElementById('image');
-        if (image) {
-          // @ts-ignore
-          let photo = image.files[0];
-          let req = new XMLHttpRequest();
-          let formData = new FormData();
-
-          formData.append('image', photo);
-          req.open('POST', '/upload');
-          req.send(formData);
-        }
-      });
-    }
-  }, []);
-
   if (!isReady) {
     return (
       <div className={classes.centered}>

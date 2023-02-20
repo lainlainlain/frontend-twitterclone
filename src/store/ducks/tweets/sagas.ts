@@ -14,9 +14,9 @@ export function* fetchTweetsRequest(): any {
   }
 }
 
-export function* fetchAddTweetRequest({ payload: text }: FetchAddTweetActionInterface): any {
+export function* fetchAddTweetRequest({ payload }: FetchAddTweetActionInterface): any {
   try {
-    const item = yield call(TweetsApi.addTweet, text);
+    const item = yield call(TweetsApi.addTweet, payload);
     yield put(addTweet(item));
   } catch (error) {
     yield put(setAddTweetForm(AddFormState.ERROR));

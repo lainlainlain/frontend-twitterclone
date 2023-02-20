@@ -264,14 +264,23 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     flexWrap: 'wrap',
   },
   imagesListItem: {
-    overflow: 'hidden',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
     width: 50,
     height: 50,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
     borderRadius: '6px',
     marginRight: '8px',
     marginBottom: '10px',
+    '& svg path': {
+      fill: 'white',
+    },
+  },
+  imagesListItemRemove: {
+    backgroundColor: 'red !important',
+    position: 'relative',
+    top: '-8px',
+    left: '40px',
+    padding: '0px',
   },
 }));
 function translateY(

@@ -9,7 +9,6 @@ import theme from './theme';
 
 ReactDOM.render(
   <Provider store={store}>
-    <input type="file" id="image"></input>
     <React.StrictMode>
       <BrowserRouter>
         <ThemeProvider theme={theme}>
