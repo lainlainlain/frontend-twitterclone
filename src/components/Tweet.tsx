@@ -11,12 +11,14 @@ import { formatDate } from '../utils/formatDate';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import { ImageList } from './ImageList';
 
 interface TweetProps {
   text: string;
   classes: ReturnType<typeof useHomeStyles>;
   _id: string;
   createdAt: string;
+  images?: string[];
   user: {
     username: string;
     fullname: string;
@@ -30,6 +32,7 @@ export const Tweet: React.FC<TweetProps> = ({
   user,
   text,
   createdAt,
+  images,
 }: TweetProps): React.ReactElement => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -79,6 +82,7 @@ export const Tweet: React.FC<TweetProps> = ({
           </div>
           <Typography variant="body1" gutterBottom>
             {text}
+            {images && <ImageList images={images} />}
           </Typography>
           <div className={classes.tweetFooter}>
             <div>

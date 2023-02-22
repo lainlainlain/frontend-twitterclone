@@ -61,7 +61,9 @@ export const Home = () => {
                   <CircularProgress></CircularProgress>
                 </div>
               ) : (
-                tweets.map((tweet) => <Tweet key={tweet._id} classes={classes} {...tweet}></Tweet>)
+                tweets.map((tweet) => (
+                  <Tweet key={tweet._id} classes={classes} images={tweet.images} {...tweet}></Tweet>
+                ))
               )}
             </Route>
 
