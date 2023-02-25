@@ -4,7 +4,11 @@ import React, { useEffect } from 'react';
 
 import { fetchTweet, setTweetData } from '../../../store/ducks/tweet/actionCreators';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectTweetData } from '../../../store/ducks/tweet/selectors';
+import {
+  selectTweetData,
+  selectTweetIsLoaded,
+  selectTweetIsLoading,
+} from '../../../store/ducks/tweet/selectors';
 import { useParams } from 'react-router-dom';
 import { useHomeStyles } from '../../theme';
 import CommentIcon from '@material-ui/icons/ChatBubbleOutlineOutlined';
@@ -16,10 +20,12 @@ import format from 'date-fns/format';
 import ruLang from 'date-fns/locale/ru';
 import { Tweet } from '../../../components/Tweet';
 import { ImageList } from '../../../components/ImageList';
+import mediumZoom from 'medium-zoom';
 
 export const FullTweet: React.FC = (): React.ReactElement | null => {
   const classes = useHomeStyles();
   const dispatch = useDispatch();
+  const isLoading = useSelector(selectTweetIsLoading);
   const params: { id?: string } = useParams();
   const id = params.id;
   const tweetData = useSelector(selectTweetData);
@@ -33,6 +39,12 @@ export const FullTweet: React.FC = (): React.ReactElement | null => {
       dispatch(setTweetData(undefined));
     };
   }, [dispatch, id]);
+
+  useEffect(() => {
+    if (!isLoading) {
+      mediumZoom('.tweet-images img');
+    }
+  }, [isLoading]);
 
   if (!tweetData) {
     return (
@@ -61,7 +73,9 @@ export const FullTweet: React.FC = (): React.ReactElement | null => {
           </div>{' '}
           <Typography variant="body1" gutterBottom className={classes.fullTweetText}>
             {tweetData.text}
-            {tweetData.images && <ImageList images={tweetData.images}></ImageList>}
+            <div className="tweet-images">
+              {tweetData.images && <ImageList images={tweetData.images}></ImageList>}
+            </div>
           </Typography>
           <Typography>
             {' '}

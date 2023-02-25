@@ -18,21 +18,17 @@ export const ImageList: React.FC<ImageListProps> = ({ images, onRemoveImage }) =
   return (
     <div className={classes.imagesList}>
       {images.map((url) => (
-        <>
-          <div
-            key={url}
-            className={classes.imagesListItem}
-            style={{ backgroundImage: `url(${url})` }}>
-            {onRemoveImage && (
-              <IconButton
-                color="primary"
-                className={classes.imagesListItemRemove}
-                onClick={() => onRemoveImage(url)}>
-                <ClearIcon style={{ fontSize: 16 }}></ClearIcon>
-              </IconButton>
-            )}
-          </div>
-        </>
+        <div className={classes.imagesListItem}>
+          <img alt={`картинка ${url}`} src={url} />
+          {onRemoveImage && (
+            <IconButton
+              color="primary"
+              className={classes.imagesListItemRemove}
+              onClick={() => onRemoveImage(url)}>
+              <ClearIcon style={{ fontSize: 16 }}></ClearIcon>
+            </IconButton>
+          )}
+        </div>
       ))}
     </div>
   );

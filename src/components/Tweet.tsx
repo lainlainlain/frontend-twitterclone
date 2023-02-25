@@ -6,7 +6,7 @@ import RepostIcon from '@material-ui/icons/RepeatOutlined';
 import LikeIcon from '@material-ui/icons/FavoriteBorderOutlined';
 import ShareIcon from '@material-ui/icons/ReplyOutlined';
 import { useHomeStyles } from '../pages/theme';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { formatDate } from '../utils/formatDate';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -36,16 +36,26 @@ export const Tweet: React.FC<TweetProps> = ({
 }: TweetProps): React.ReactElement => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+  const history = useHistory();
+
+  const handleClickTweet = (event: React.MouseEvent<HTMLElement>) => {
+    event.preventDefault();
+    history.push(`/home/tweet/${_id}`);
+  };
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    event.stopPropagation();
+    event.preventDefault();
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = () => {
+  const handleClose = (event: React.MouseEvent<HTMLElement>) => {
+    event.stopPropagation();
+    event.preventDefault();
     setAnchorEl(null);
   };
   return (
-    <Link to={`/home/tweet/${_id}`} className={classes.tweetWrapper}>
+    <a href={`/home/tweet/${_id}`} className={classes.tweetWrapper} onClick={handleClickTweet}>
       <Paper variant="outlined" className={classNames(classes.tweet, classes.tweetsHeader)}>
         <Avatar
           alt={`${user.username} avatar`}
@@ -112,6 +122,6 @@ export const Tweet: React.FC<TweetProps> = ({
           </div>
         </div>
       </Paper>{' '}
-    </Link>
+    </a>
   );
 };

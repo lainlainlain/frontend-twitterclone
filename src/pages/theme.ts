@@ -266,11 +266,16 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
   imagesListItem: {
     width: 50,
     height: 50,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
     borderRadius: '6px',
     marginRight: '8px',
     marginBottom: '10px',
+    overflow: 'hidden',
+    position: 'relative',
+    '& img': {
+      width: ' 100%',
+      height: '100%',
+      'object-fit': 'cover',
+    },
     '& svg path': {
       fill: 'white',
     },
