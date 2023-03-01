@@ -12,6 +12,8 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { ImageList } from './ImageList';
+import { removeTweet } from '../store/ducks/tweets/actionCreators';
+import { useDispatch } from 'react-redux';
 
 interface TweetProps {
   text: string;
@@ -35,6 +37,7 @@ export const Tweet: React.FC<TweetProps> = ({
   images,
 }: TweetProps): React.ReactElement => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const dispatch = useDispatch();
   const open = Boolean(anchorEl);
   const history = useHistory();
 
@@ -53,6 +56,13 @@ export const Tweet: React.FC<TweetProps> = ({
     event.stopPropagation();
     event.preventDefault();
     setAnchorEl(null);
+  };
+
+  const handleRemoveTweet = (event: React.MouseEvent<HTMLElement>) => {
+    handleClose(event);
+    if (window.confirm('Вы действительено хотите удалить твит?')) {
+      dispatch(removeTweet(_id));
+    }
   };
   return (
     <a href={`/home/tweet/${_id}`} className={classes.tweetWrapper} onClick={handleClickTweet}>
@@ -85,7 +95,7 @@ export const Tweet: React.FC<TweetProps> = ({
                 keepMounted
                 open={open}
                 onClose={handleClose}>
-                <MenuItem onClick={handleClose}> Удалить твит</MenuItem>
+                <MenuItem onClick={handleRemoveTweet}> Удалить твит</MenuItem>
                 <MenuItem onClick={handleClose}> Редактироватьь твит</MenuItem>
               </Menu>
             </div>
