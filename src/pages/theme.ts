@@ -288,6 +288,15 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     left: '40px',
     padding: '0px',
   },
+  profileMenu: {
+    top: 'auto !important',
+    left: '350px !important',
+    width: '250px !important',
+    bottom: '110px !important',
+    boxShadow: '1px 1px 10px, rgba(0,0,0,0.08)',
+    borderRadius: '20px',
+    border: '1px solid rgba(0,0,0.1)',
+  },
 }));
 function translateY(
   arg0: number,

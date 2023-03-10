@@ -11,6 +11,7 @@ export enum UserActionsType {
   FETCH_USER_DATA = 'user/FETCH_USER_DATA',
   FETCH_SIGN_IN = 'user/FETCH_SIGN_IN',
   FETCH_SIGN_UP = 'user/FETCH_SIGN_UP',
+  SIGN_OUT = 'user/SIGN_OUT',
 }
 
 export interface SetUserDataActionInterface extends Action<UserActionsType> {
@@ -28,6 +29,10 @@ export interface FetchSignInActionInterface extends Action<UserActionsType> {
   payload: LoginFormProps;
 }
 
+export interface SignOutActionInterface extends Action<UserActionsType> {
+  type: UserActionsType.SIGN_OUT;
+}
+
 export interface FetchUserDataActionInterface extends Action<UserActionsType> {
   type: UserActionsType.FETCH_USER_DATA;
 }
@@ -40,4 +45,5 @@ export interface FetchSignUpActionInterface extends Action<UserActionsType> {
 export type UserActions =
   | SetUserDataActionInterface
   | SetUserLoadingUserStateActionInterface
-  | FetchUserDataActionInterface;
+  | FetchUserDataActionInterface
+  | SignOutActionInterface;
