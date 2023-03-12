@@ -11,6 +11,10 @@ import { LoadingStatus } from './store/types';
 
 import { useHomeStyles } from './pages/theme';
 import TwitterIcon from '@material-ui/icons/Twitter';
+import { UserPage } from './pages/User';
+import { Layout } from './pages/Layout';
+import './index.css';
+import { ActivatePage } from './pages/ActivatePage';
 
 function App() {
   const classes = useHomeStyles();
@@ -29,10 +33,10 @@ function App() {
   React.useEffect(() => {
     if (!isAuth && isReady) {
       history.push('/signin');
-    } else {
+    } else if (history.location.pathname === '/') {
       history.push('/home');
     }
-  }, [isAuth, isReady]);
+  }, [isAuth, isReady, history]);
 
   if (!isReady) {
     return (
@@ -46,7 +50,11 @@ function App() {
     <div className="App">
       <Switch>
         <Route path="/signin" component={SignIn} />
-        <Route path="/" component={Home} />
+        <Layout>
+          <Route path="/home" component={Home} />
+          <Route path="/user" component={UserPage} />
+          <Route path="/user/activate/:hash" component={ActivatePage} />
+        </Layout>
       </Switch>
     </div>
   );

@@ -8,8 +8,8 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import { ModalBlock } from '../../components/ModalBlock';
-import { LoginModal } from './LoginModal';
-import { RegisterModal } from './RegisterModal';
+import { LoginModal } from './components/LoginModal';
+import { RegisterModal } from './components/RegisterModal';
 
 export const useStylesSignIn = makeStyles((theme) => ({
   wrapper: { boxSizing: 'border-box', display: 'flex', height: '100vh' },

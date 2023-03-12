@@ -1,18 +1,18 @@
 import { Button, FormControl, FormGroup, TextField } from '@material-ui/core';
 import React from 'react';
-import { useStylesSignIn } from '.';
-import { ModalBlock } from '../../components/ModalBlock';
+import { useStylesSignIn } from '..';
+import { ModalBlock } from '../../../components/ModalBlock';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
-import { Notification } from '../../components/Notification';
+import { Notification } from '../../../components/Notification';
 import { Color } from '@material-ui/lab';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { fetchSignIn } from '../../store/ducks/user/actionCreators';
-import { selectUserStatus } from '../../store/ducks/user/selectors';
-import { LoadingStatus } from '../../store/types';
+import { fetchSignIn } from '../../../store/ducks/user/actionCreators';
+import { selectUserStatus } from '../../../store/ducks/user/selectors';
+import { LoadingStatus } from '../../../store/types';
 
 interface LoginModalProps {
   open: boolean;

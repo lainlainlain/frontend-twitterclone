@@ -1,6 +1,7 @@
+import { verify } from 'crypto';
 import { axios } from '../../core/axios';
-import { LoginFormProps } from '../../pages/SignIn/LoginModal';
-import { RegisterFormProps } from '../../pages/SignIn/RegisterModal';
+import { LoginFormProps } from '../../pages/SignIn/components/LoginModal';
+import { RegisterFormProps } from '../../pages/SignIn/components/RegisterModal';
 
 interface ResponseApi {
   status: string;
@@ -8,6 +9,11 @@ interface ResponseApi {
 }
 
 export const AuthApi = {
+  async verify(hash: string): Promise<ResponseApi> {
+    const { data } = await axios.get<ResponseApi>('/auth/verify?hash=' + hash);
+    return data;
+  },
+
   async signIn(postData: LoginFormProps): Promise<ResponseApi> {
     const { data } = await axios.post<ResponseApi>('/auth/login', {
       username: postData.email,

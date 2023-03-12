@@ -4,11 +4,7 @@ import React, { useEffect } from 'react';
 
 import { fetchTweet, setTweetData } from '../../../store/ducks/tweet/actionCreators';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  selectTweetData,
-  selectTweetIsLoaded,
-  selectTweetIsLoading,
-} from '../../../store/ducks/tweet/selectors';
+import { selectTweetData, selectTweetIsLoading } from '../../../store/ducks/tweet/selectors';
 import { useParams } from 'react-router-dom';
 import { useHomeStyles } from '../../theme';
 import CommentIcon from '@material-ui/icons/ChatBubbleOutlineOutlined';
@@ -22,7 +18,7 @@ import { Tweet } from '../../../components/Tweet';
 import { ImageList } from '../../../components/ImageList';
 import mediumZoom from 'medium-zoom';
 
-export const FullTweet: React.FC = (): React.ReactElement | null => {
+export const FullTweet: React.FC = () => {
   const classes = useHomeStyles();
   const dispatch = useDispatch();
   const isLoading = useSelector(selectTweetIsLoading);

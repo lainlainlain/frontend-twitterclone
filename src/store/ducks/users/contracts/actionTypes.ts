@@ -1,5 +1,5 @@
 import { Action } from 'redux';
-import { LoginFormProps } from '../../../../pages/SignIn/LoginModal';
+import { LoginFormProps } from '../../../../pages/SignIn/components/LoginModal';
 import { User } from '../../user/contracts/state';
 
 export enum UsersActionsType {

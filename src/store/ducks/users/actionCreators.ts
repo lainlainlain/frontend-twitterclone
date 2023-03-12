@@ -5,7 +5,7 @@ import {
   UsersActionsType,
   FetchUsersActionInterface,
 } from './contracts/actionTypes';
-import { LoginFormProps } from '../../../pages/SignIn/LoginModal';
+import { LoginFormProps } from '../../../pages/SignIn/components/LoginModal';
 import { User } from '../user/contracts/state';
 
 export const setUsers = (payload: User[]): SetUsersDataActionInterface => ({

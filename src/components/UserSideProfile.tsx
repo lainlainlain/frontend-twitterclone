@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectUserData } from '../store/ducks/user/selectors';
 import { Menu } from '@material-ui/core';
 import { signOut } from '../store/ducks/user/actionCreators';
+import { Link } from 'react-router-dom';
 
 interface UserSideProfileProps {
   classes: ReturnType<typeof useHomeStyles>;
@@ -19,6 +20,8 @@ export const UserSideProfile: React.FC<UserSideProfileProps> = ({
 }: UserSideProfileProps) => {
   const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
   const dispatch = useDispatch();
+
+  const userData = useSelector(selectUserData);
 
   const handleClosePopup = () => {
     setAnchorEl(null);
@@ -32,8 +35,6 @@ export const UserSideProfile: React.FC<UserSideProfileProps> = ({
   const handleOpenPopup = (event: React.MouseEvent<HTMLDivElement, MouseEvent>): void => {
     setAnchorEl(event.currentTarget);
   };
-
-  const userData = useSelector(selectUserData);
 
   return (
     <>
@@ -53,7 +54,9 @@ export const UserSideProfile: React.FC<UserSideProfileProps> = ({
         open={Boolean(anchorEl)}
         onClose={handleClosePopup}
         classes={{ paper: classes.profileMenu }}>
-        <MenuItem onClick={handleClosePopup}>Профиль</MenuItem>
+        <Link to={`/user/${userData?._id}`}>
+          <MenuItem onClick={handleClosePopup}>Профиль</MenuItem>
+        </Link>
         <MenuItem onClick={handleSignOut}>Выйти</MenuItem>
       </Menu>
     </>

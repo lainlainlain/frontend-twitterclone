@@ -1,6 +1,6 @@
 import { Action } from 'redux';
-import { LoginFormProps } from '../../../../pages/SignIn/LoginModal';
-import { RegisterFormProps } from '../../../../pages/SignIn/RegisterModal';
+import { LoginFormProps } from '../../../../pages/SignIn/components/LoginModal';
+import { RegisterFormProps } from '../../../../pages/SignIn/components/RegisterModal';
 import { LoadingStatus } from '../../../types';
 
 import { User } from './state';

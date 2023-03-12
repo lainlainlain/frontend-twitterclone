@@ -115,14 +115,17 @@ export const SideMenu: React.FC<SideMenuProps> = ({
           </div>
         </li>
         <li className={classes.sideMenuListItem}>
-          <div>
-            <UserIcon className={classes.sideMenuListItem} />
-            <Hidden smDown>
-              <Typography className={classes.sideMenuListItemLabel} variant="h6">
-                Профиль
-              </Typography>
-            </Hidden>
-          </div>
+          <Link to="/user/asdqwe">
+            <div>
+              <UserIcon className={classes.sideMenuListItemIcon} />
+
+              <Hidden smDown>
+                <Typography className={classes.sideMenuListItemLabel} variant="h6">
+                  Профиль
+                </Typography>
+              </Hidden>
+            </div>
+          </Link>
         </li>
 
         <li className={classes.sideMenuListItem}>
