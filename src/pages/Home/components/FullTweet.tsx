@@ -5,7 +5,7 @@ import React, { useEffect } from 'react';
 import { fetchTweet, setTweetData } from '../../../store/ducks/tweet/actionCreators';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectTweetData, selectTweetIsLoading } from '../../../store/ducks/tweet/selectors';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useHomeStyles } from '../../theme';
 import CommentIcon from '@material-ui/icons/ChatBubbleOutlineOutlined';
 import RepostIcon from '@material-ui/icons/RepeatOutlined';
@@ -57,16 +57,18 @@ export const FullTweet: React.FC = () => {
           <div className={classNames(classes.tweetsHeaderUser)}>
             <Avatar
               alt={`${tweetData.user.username} avatar`}
-              src={tweetData.user.avatarUrl}
               className={classes.tweetAvatar}></Avatar>
             <Typography>
-              <b>{tweetData.user.fullname}</b>&nbsp;
+              <Link to={`/user/${tweetData.user._id}`}>
+                <b>{tweetData.user.fullname}</b>
+              </Link>
+              &nbsp;
               <div>
                 <span className={classes.tweetUserName}>@{tweetData.user.username}</span>
                 &nbsp;
               </div>
             </Typography>
-          </div>{' '}
+          </div>
           <Typography variant="body1" gutterBottom className={classes.fullTweetText}>
             {tweetData.text}
             <div className="tweet-images">
@@ -74,12 +76,11 @@ export const FullTweet: React.FC = () => {
             </div>
           </Typography>
           <Typography>
-            {' '}
             <span className={classes.tweetUserName}>
               {format(new Date(tweetData.createdAt), 'H:mm', {
                 locale: ruLang,
-              })}{' '}
-              ·{' '}
+              })}
+              ·
             </span>
             <span className={classes.tweetUserName}>
               {format(new Date(tweetData.createdAt), 'dd MMM. yyyy г.', {
@@ -110,8 +111,6 @@ export const FullTweet: React.FC = () => {
           user={{
             fullname: 'Arlene Andrews',
             username: 'ArleneAndrews_1',
-            avatarUrl:
-              'https://pbs.twimg.com/profile_images/1172922412029136897/gFRmgn1W_bigger.jpg',
           }}
           classes={classes}
         />
@@ -122,8 +121,6 @@ export const FullTweet: React.FC = () => {
           user={{
             fullname: 'Arlene Andrews',
             username: 'ArleneAndrews_1',
-            avatarUrl:
-              'https://pbs.twimg.com/profile_images/1172922412029136897/gFRmgn1W_bigger.jpg',
           }}
           classes={classes}
         />
@@ -134,8 +131,6 @@ export const FullTweet: React.FC = () => {
           user={{
             fullname: 'Arlene Andrews',
             username: 'ArleneAndrews_1',
-            avatarUrl:
-              'https://pbs.twimg.com/profile_images/1172922412029136897/gFRmgn1W_bigger.jpg',
           }}
           classes={classes}
         />

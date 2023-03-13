@@ -14,16 +14,27 @@ import { selectTweetsIsLoading, selectTweetsItems } from '../../store/ducks/twee
 import { Tweet } from '../../components/Tweet';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchTweets } from '../../store/ducks/tweets/actionCreators';
+import { User } from '../../store/ducks/user/contracts/state';
+import { AuthApi } from '../../services/api/authApi';
 
 export const UserPage = () => {
   const classes = useHomeStyles();
   const [activeTab, setActiveTab] = React.useState<number>(0);
+  const [userData, setUserData] = React.useState<User | undefined>();
+
   const dispatch = useDispatch();
   const tweets = useSelector(selectTweetsItems);
   const isLoading = useSelector(selectTweetsIsLoading);
 
   React.useEffect(() => {
     dispatch(fetchTweets());
+
+    const userId = window.location.pathname.split('/').pop();
+    if (userId) {
+      AuthApi.getUserData(userId).then(({ data }) => {
+        setUserData(data);
+      });
+    }
   }, [dispatch]);
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
@@ -35,17 +46,17 @@ export const UserPage = () => {
       <Paper className={classes.tweetsHeader} variant="outlined">
         <BackButton />
         <div>
-          <Typography variant="h6">asdqwe</Typography>
+          <Typography variant="h6">{userData?.fullname}</Typography>
           <Typography variant="caption" display="block" gutterBottom>
-            65 твита
+            {tweets.length} твитов
           </Typography>
         </div>
       </Paper>
       <div className="user__header"></div>
       <div className="user__info">
         <Avatar></Avatar>
-        <h2 className="user__info-fullname">Aasd qwe</h2>
-        <span className="user__info-username">@asdqwe</span>
+        <h2 className="user__info-fullname">{userData?.fullname}</h2>
+        <span className="user__info-username">@{userData?.username}</span>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, velit! Eveniet ad ullam
           dolores architecto quis aliquid? Blanditiis quisquam molestias magnam, dignissimos quasi

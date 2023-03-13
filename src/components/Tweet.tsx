@@ -14,6 +14,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { ImageList } from './ImageList';
 import { removeTweet } from '../store/ducks/tweets/actionCreators';
 import { useDispatch } from 'react-redux';
+import { User } from '../store/ducks/user/contracts/state';
 
 interface TweetProps {
   text: string;
@@ -21,11 +22,7 @@ interface TweetProps {
   _id: string;
   createdAt: string;
   images?: string[];
-  user: {
-    username: string;
-    fullname: string;
-    avatarUrl: string;
-  };
+  user: Pick<User, '_id' | 'fullname' | 'username'>;
 }
 
 export const Tweet: React.FC<TweetProps> = ({
@@ -67,10 +64,7 @@ export const Tweet: React.FC<TweetProps> = ({
   return (
     <a href={`/home/tweet/${_id}`} className={classes.tweetWrapper} onClick={handleClickTweet}>
       <Paper variant="outlined" className={classNames(classes.tweet, classes.tweetsHeader)}>
-        <Avatar
-          alt={`${user.username} avatar`}
-          src={user.avatarUrl}
-          className={classes.tweetAvatar}></Avatar>
+        <Avatar alt={`${user.username} avatar`} className={classes.tweetAvatar}></Avatar>
 
         <div className={classes.tweetContent}>
           <div className={classes.tweetHeader}>
@@ -96,7 +90,7 @@ export const Tweet: React.FC<TweetProps> = ({
                 open={open}
                 onClose={handleClose}>
                 <MenuItem onClick={handleRemoveTweet}> Удалить твит</MenuItem>
-                <MenuItem onClick={handleClose}> Редактироватьь твит</MenuItem>
+                <MenuItem onClick={handleClose}> Редактировать твит</MenuItem>
               </Menu>
             </div>
           </div>

@@ -14,6 +14,8 @@ import { AddTweetForm } from './AddTweetForm';
 import { Link } from 'react-router-dom';
 import { UserSideProfile } from './UserSideProfile';
 import HomeIcon from '@material-ui/icons/HomeOutlined';
+import { useSelector } from 'react-redux';
+import { selectUserData } from '../store/ducks/user/selectors';
 
 interface SideMenuProps {
   classes: ReturnType<typeof useHomeStyles>;
@@ -23,6 +25,7 @@ export const SideMenu: React.FC<SideMenuProps> = ({
   classes,
 }: SideMenuProps): React.ReactElement => {
   const [visibleAddTweetForm, setVisibleAddTweetForm] = React.useState<boolean>(false);
+  const userData = useSelector(selectUserData);
 
   const modalBlockCloseHandler = () => {
     setVisibleAddTweetForm(false);
@@ -115,7 +118,7 @@ export const SideMenu: React.FC<SideMenuProps> = ({
           </div>
         </li>
         <li className={classes.sideMenuListItem}>
-          <Link to="/user/asdqwe">
+          <Link to={`/user/${userData?._id}`}>
             <div>
               <UserIcon className={classes.sideMenuListItemIcon} />
 

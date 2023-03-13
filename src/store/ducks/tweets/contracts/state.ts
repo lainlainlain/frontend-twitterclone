@@ -1,4 +1,5 @@
 import { LoadingStatus } from '../../../types';
+import { User } from '../../user/contracts/state';
 
 export enum AddFormState {
   LOADING = 'LOADING',
@@ -11,11 +12,7 @@ export interface Tweet {
   text: string;
   createdAt: string;
   images?: [];
-  user: {
-    fullname: string;
-    username: string;
-    avatarUrl: string;
-  };
+  user: Pick<User, '_id' | 'fullname' | 'username'>;
 }
 
 export interface TweetsState {
